@@ -12,10 +12,10 @@ import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons'
 import Button from '../Button/Button';
 
 const ProductBox = ({ name, price, promo, stars, favorite, compare }) => {
-  const FavoriteButtonActive = clsx('outline', {
+  const favoriteButtonActive = clsx('outline', {
     [styles.favorite]: favorite,
   });
-  const CompareButtonActive = clsx('outline', {
+  const compareButtonActive = clsx('outline', {
     [styles.compare]: compare,
   });
 
@@ -47,10 +47,10 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare }) => {
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button variant='outline' className={FavoriteButtonActive}>
+          <Button variant='outline' className={favoriteButtonActive}>
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline' className={CompareButtonActive}>
+          <Button variant='outline' className={compareButtonActive}>
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
