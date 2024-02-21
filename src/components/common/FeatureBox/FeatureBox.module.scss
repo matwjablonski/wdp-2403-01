@@ -8,11 +8,12 @@
   text-decoration: none;
 
   &:hover {
-        box-shadow: 0 0 12px rgba(33, 33, 33, .2);
-        text-decoration: none;
-        .iconWrapper::before {
-          box-shadow: 0 0 12px rgba(33, 33, 33, .2);
-        }
+    box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+    text-decoration: none;
+
+    .iconWrapper::before {
+      box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+    }
   }
 
   .iconWrapper {

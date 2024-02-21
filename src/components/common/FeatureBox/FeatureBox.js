@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { clsx } from 'clsx';
 import styles from './FeatureBox.module.scss';
 
 const FeatureBox = ({ active, icon, children }) => (
-  <Link to='/' className={styles.root + (active ? ' ' + styles.active : '')}>
+  <Link to='/' className={clsx(styles.root, active && styles.active)}>
     {icon && (
       <div className={styles.iconWrapper}>
         <FontAwesomeIcon className={styles.icon} icon={icon} />
