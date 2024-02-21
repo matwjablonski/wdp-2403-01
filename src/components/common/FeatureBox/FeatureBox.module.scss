@@ -1,9 +1,19 @@
 @import "../../../styles/settings.scss";
 
 .root {
+  display: block;
   border: 1px solid #b6b6b6;
   text-align: center;
   margin-top: 40px;
+  text-decoration: none;
+
+  &:hover {
+        box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+        text-decoration: none;
+        .iconWrapper::before {
+          box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+        }
+  }
 
   .iconWrapper {
     height: 60px;
