@@ -3,9 +3,13 @@ import { PropTypes } from 'prop-types';
 import { useSwipeable } from 'react-swipeable';
 
 const Swipeable = ({ children, action }) => {
+  const config = {
+    trackMouse: true,
+  };
   const handlers = useSwipeable({
     onSwipedLeft: () => action('increment'),
     onSwipedRight: () => action('decrement'),
+    ...config,
   });
 
   return <div {...handlers}>{children}</div>;
