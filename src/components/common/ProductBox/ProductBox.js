@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { clsx } from 'clsx';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import Price from '../Price/Price';
 
 const ProductBox = ({ name, price, promo, stars, originalPrice }) => (
   <div className={styles.root}>
@@ -48,12 +48,8 @@ const ProductBox = ({ name, price, promo, stars, originalPrice }) => (
         </Button>
       </div>
       <div className={styles.price}>
-        <div className={clsx(originalPrice && styles.original)}>
-          {originalPrice && '$ ' + originalPrice}
-        </div>
-        <Button noHover variant='small'>
-          $ {price}
-        </Button>
+        <Price price={originalPrice} variant='original' />
+        <Price price={price} variant='actual' />
       </div>
     </div>
   </div>
