@@ -86,6 +86,10 @@
     }
     .logo {
       flex: 0 0 45%;
+      img {
+        width: 65%;
+        height: 65%;
+      }
     }
 
     .cart {

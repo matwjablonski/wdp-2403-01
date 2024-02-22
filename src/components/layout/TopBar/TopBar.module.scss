@@ -40,3 +40,24 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .root {
+    .login {
+      span {
+        display: none;
+      }
+    }
+    .register {
+      span {
+        display: none;
+      }
+    }
+    .topOptions {
+      flex: 0 0 60%;
+      ul li {
+        margin-right: 0.8rem;
+      }
+    }
+  }
+}
