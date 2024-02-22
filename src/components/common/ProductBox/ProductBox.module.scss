@@ -29,6 +29,8 @@
     }
 
     .buttons {
+      opacity: 0;
+      transition: opacity 0.3s;
       display: flex;
       justify-content: space-between;
     }
@@ -74,5 +76,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .hovered {
+    opacity: 1;
+  }
+
+  &:hover .priceBtn{
+    background-color: $primary;
   }
 }
