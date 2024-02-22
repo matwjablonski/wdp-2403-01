@@ -67,6 +67,12 @@
           background-color: lighten($primary, 10%);
         }
       }
+
+      .itemsAmount {
+        position: absolute;
+        top: 15%;
+        left: 32%;
+      }
     }
   }
 }
