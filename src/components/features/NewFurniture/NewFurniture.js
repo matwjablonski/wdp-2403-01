@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import { getItemsOnPage } from '../../../utils/viewMode';
 
 class NewFurniture extends React.Component {
   constructor(props) {
@@ -14,7 +15,6 @@ class NewFurniture extends React.Component {
       activePage: 0,
       activeCategory: 'bed',
     };
-    console.log('ufsowa: ', props);
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
   }
 
@@ -34,7 +34,6 @@ class NewFurniture extends React.Component {
     if (actualPage >= 0 && actualPage < pagesCount) {
       this.setState({ activePage: actualPage });
     }
-    console.log('active page:', pageChange, actualPage, this.state.activePage);
   }
 
   handlePageChange(newPage) {
@@ -51,8 +50,6 @@ class NewFurniture extends React.Component {
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
-
-    console.log('ufsowa change: ', this.props);
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -100,7 +97,7 @@ class NewFurniture extends React.Component {
               {categoryProducts
                 .slice(activePage * itemsOnPage, (activePage + 1) * itemsOnPage)
                 .map(item => (
-                  <div key={item.id} className='col-3'>
+                  <div key={item.id} className='col col-sm-6 col-md-3'>
                     <ProductBox {...item} />
                   </div>
                 ))}
@@ -141,16 +138,7 @@ NewFurniture.defaultProps = {
 
 function mapStateToProps(state) {
   const activeViewMode = state.activeViewMode;
-  switch (activeViewMode) {
-    case 'desktop':
-      return { itemsOnPage: 8 };
-    case 'tablet':
-      return { itemsOnPage: 4 };
-    case 'mobile':
-      return { itemsOnPage: 2 };
-    default:
-      return 8;
-  }
+  return getItemsOnPage(activeViewMode);
 }
 
 export default connect(mapStateToProps)(NewFurniture);
