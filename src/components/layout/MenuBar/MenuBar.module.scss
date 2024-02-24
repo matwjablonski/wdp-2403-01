@@ -1,7 +1,7 @@
 @import "../../../styles/settings.scss";
 
 .root {
-  box-shadow: 2px 3.464px 6px $blackLow;
+  box-shadow: 2px 3.464px 6px $blackLowOpacity;
   background-color: $header-menubar-bg;
 
   :global(.container) > :global(.row) {
