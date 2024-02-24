@@ -275,6 +275,7 @@ const initialState = {
   cart: {
     products: [],
   },
+  activeViewMode: 'desktop',
 };
 
 export default initialState;
