@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styles from './NewFurniture.module.scss';
@@ -13,16 +14,16 @@ class NewFurniture extends React.Component {
       activePage: 0,
       activeCategory: 'bed',
     };
-
+    console.log('ufsowa: ', props);
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
   }
 
   handlePageSwipe(pageChange) {
-    const { products } = this.props;
+    const { products, itemsOnPage } = this.props;
     const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / 8);
+    const pagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
 
     let actualPage = activePage;
     if (pageChange === 'increment') {
@@ -45,11 +46,13 @@ class NewFurniture extends React.Component {
   }
 
   render() {
-    const { categories, products } = this.props;
+    const { categories, products, itemsOnPage } = this.props;
     const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / 8);
+    const pagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
+
+    console.log('ufsowa change: ', this.props);
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -95,7 +98,7 @@ class NewFurniture extends React.Component {
             </div>
             <div className='row'>
               {categoryProducts
-                .slice(activePage * 8, (activePage + 1) * 8)
+                .slice(activePage * itemsOnPage, (activePage + 1) * itemsOnPage)
                 .map(item => (
                   <div key={item.id} className='col-3'>
                     <ProductBox {...item} />
@@ -128,6 +131,7 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  itemsOnPage: PropTypes.number,
 };
 
 NewFurniture.defaultProps = {
@@ -135,4 +139,18 @@ NewFurniture.defaultProps = {
   products: [],
 };
 
-export default NewFurniture;
+function mapStateToProps(state) {
+  const activeViewMode = state.activeViewMode;
+  switch (activeViewMode) {
+    case 'desktop':
+      return { itemsOnPage: 8 };
+    case 'tablet':
+      return { itemsOnPage: 4 };
+    case 'mobile':
+      return { itemsOnPage: 2 };
+    default:
+      return 8;
+  }
+}
+
+export default connect(mapStateToProps)(NewFurniture);

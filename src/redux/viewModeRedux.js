@@ -14,8 +14,7 @@ const viewModes = [
 ];
 
 /* selectors */
-export const getAll = ({ cart }) => cart.products;
-export const getCount = ({ cart }) => cart.products.length;
+export const getViewMode = ({ activeViewMode }) => activeViewMode;
 
 /* action name creator */
 const reducerName = 'viewMode';
