@@ -6,7 +6,7 @@ const Price = ({ price, variant }) => {
   const classes = ['main'];
 
   if (variant) classes.push(styles[variant]);
-  if (!price || price < 0) return <></>;
+  if (!price || price < 0) return null;
   return <div className={classes.join(' ')}>$ {price}</div>;
 };
 
