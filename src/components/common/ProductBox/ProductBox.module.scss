@@ -5,6 +5,13 @@
   border: 1px solid #e1e1e1;
   margin-bottom: 2rem;
 
+  .favorite {
+    background-color: $primary;
+  }
+  .compare {
+    background-color: $primary;
+  }
+
   .photo {
     position: relative;
     background: {
