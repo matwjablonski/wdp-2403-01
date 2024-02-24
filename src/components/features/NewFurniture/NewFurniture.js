@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { useState } from 'react';
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
@@ -12,6 +12,7 @@ class NewFurniture extends React.Component {
     this.state = {
       activePage: 0,
       activeCategory: 'bed',
+      isFading: false,
     };
 
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
@@ -37,16 +38,29 @@ class NewFurniture extends React.Component {
   }
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    this.setState({ isFading: true }, () => {
+      setTimeout(() => {
+        this.setState({
+          activePage: newPage,
+          isFading: false,
+        });
+      }, 500);
+    });
   }
-
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+    this.setState({ isFading: true }, () => {
+      setTimeout(() => {
+        this.setState({
+          activeCategory: newCategory,
+          isFading: false,
+        });
+      }, 500);
+    });
   }
 
   render() {
     const { categories, products } = this.props;
-    const { activeCategory, activePage } = this.state;
+    const { activeCategory, activePage, isFading } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
@@ -93,7 +107,7 @@ class NewFurniture extends React.Component {
                 </div>
               </div>
             </div>
-            <div className='row'>
+            <div className={`row ${isFading ? styles.fadeOut : styles.fadeIn}`}>
               {categoryProducts
                 .slice(activePage * 8, (activePage + 1) * 8)
                 .map(item => (
