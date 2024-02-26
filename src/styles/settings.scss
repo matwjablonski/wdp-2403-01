@@ -21,6 +21,7 @@ $hover-translate-y: 5px;
   transition: all $time-animation ease;
 
   &:hover {
+    background-color: $primary;
     transform: translateY($hover-translate-y);
   }
 }

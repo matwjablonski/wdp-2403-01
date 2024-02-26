@@ -4,11 +4,16 @@
   background-color: #ffffff;
   border: 1px solid #e1e1e1;
   margin-bottom: 2rem;
-  @extend %hover-effects;
+
+  .favorite {
+    background-color: $primary;
+  }
+  .compare {
+    background-color: $primary;
+  }
 
   .photo {
     position: relative;
-    padding: 80% 10px 0 10px;
     background: {
       color: #f4f5f7;
       size: contain;
