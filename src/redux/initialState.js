@@ -6,6 +6,23 @@ const initialState = {
     { id: 'table', name: 'Table' },
     { id: 'dining', name: 'Dining' },
   ],
+  promotions: [
+    {
+      type: 'left-panel',
+      text: 'Guest',
+      filePath: '/images/promotions/left-panel.jpg',
+    },
+    {
+      type: 'right-upper-panel',
+      text: 'Office',
+      filePath: '/images/promotions/right-upper-panel.jpg',
+    },
+    {
+      type: 'right-bottom-panel',
+      text: 'Special',
+      filePath: '/images/promotions/right-bottom-panel.jpg',
+    },
+  ],
   products: [
     {
       id: 'aenean-ru-bristique-1',
