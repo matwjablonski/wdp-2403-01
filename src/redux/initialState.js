@@ -272,6 +272,9 @@ const initialState = {
       compare: false,
     },
   ],
+
+  productsCompare: [],
+
   cart: {
     products: [],
   },
