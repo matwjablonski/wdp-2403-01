@@ -10,8 +10,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import ProductImage from '../ProductImage/ProductImage';
 
-const ProductBox = ({ name, price, promo, stars, favorite, compare }) => {
+const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category }) => {
   const favoriteButtonActive = clsx('outline', {
     [styles.favorite]: favorite,
   });
@@ -22,6 +23,7 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare }) => {
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
+        <ProductImage name={name} id={id} category={category} />
         {promo && <div className={styles.sale}>{promo}</div>}
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
@@ -70,6 +72,8 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  id: PropTypes.string,
+  category: PropTypes.string,
   favorite: PropTypes.bool,
   compare: PropTypes.bool,
 };
