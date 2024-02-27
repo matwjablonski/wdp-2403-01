@@ -9,17 +9,23 @@ const initialState = {
   promotions: [
     {
       type: 'left-panel',
-      text: 'Guest',
+      title: 'guest room',
+      subtitle: 'sofa',
+      discount: '-20%',
       filePath: '/images/promotions/left-panel.jpg',
     },
     {
       type: 'right-upper-panel',
-      text: 'Office',
+      title: 'office chair',
+      subtitle: 'collection',
+      discount: '$200.00',
       filePath: '/images/promotions/right-upper-panel.jpg',
     },
     {
       type: 'right-bottom-panel',
-      text: 'Special',
+      title: 'special collection',
+      subtitle: 'save up x of furniture',
+      discount: '45%',
       filePath: '/images/promotions/right-bottom-panel.jpg',
     },
   ],
