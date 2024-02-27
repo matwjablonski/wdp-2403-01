@@ -8,8 +8,9 @@
     background-repeat: no-repeat;
     background-position: 0% 0%;
     background-size: 100% 100%;
+    height: 100%;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 575.5px) {
       height: 150px;
     }
   }
@@ -17,7 +18,7 @@
   .panel {
   //  column-gap: 10px;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 575.5px) {
       row-gap: 10px;
     }
   }
@@ -62,10 +63,14 @@
   .rightPanel {
     height: 100%;
     row-gap: 30px;
+    @media only screen and (max-width: 575.5px) {
+      row-gap: 10px;
+    }
 
     .rightUpper {
-      background-color: aqua;
+      background-color: rgb(181, 189, 223);
       flex: 1;
+      padding: 10px;
 
       .content {
         width: 50%;
@@ -73,7 +78,7 @@
     }
 
     .rightBottom {
-      background-color: bisque;
+      background-color: rgb(243, 213, 224);
       flex: 1;
     }
   }

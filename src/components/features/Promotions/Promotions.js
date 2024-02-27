@@ -65,13 +65,19 @@ const Promotions = () => {
                   </div>
                 </div>
               </div>
-              <div
-                className={clsx('', styles.bkgImage, styles.rightBottom)}
-                style={{
-                  backgroundImage: `url(${rightBottomPanelImageProps.filePath})`,
-                }}
-              >
-                RIGHT BOTTOM
+              <div className={clsx('', styles.rightBottom)}>
+                <div
+                  className={clsx(styles.bkgImage)}
+                  style={{
+                    backgroundImage: `url(${rightBottomPanelImageProps.filePath})`,
+                  }}
+                >
+                  <div className={styles.content}>
+                    <p>Guest room</p>
+                    <p>Sofa</p>
+                    <p>-20%</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
