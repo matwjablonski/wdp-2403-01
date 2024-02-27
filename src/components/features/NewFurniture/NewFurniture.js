@@ -34,7 +34,6 @@ class NewFurniture extends React.Component {
     if (actualPage >= 0 && actualPage < pagesCount) {
       this.setState({ activePage: actualPage });
     }
-    console.log('active page:', pageChange, actualPage, this.state.activePage);
   }
 
   handlePageChange(newPage) {
