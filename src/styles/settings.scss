@@ -12,16 +12,16 @@ $text-color: #2a2a2a;
 
 $form-border-color: #292929;
 
-$time-transition: 250ms;
+$time-animation: 250ms;
+$background-color-time-animation: 250ms;
+$text-color-time-animation: 250ms;
+$hover-translate-y: 5px;
 
-$time-animation-background-color: $time-transition + 0ms;
-$time-animation-text: $time-transition + 0ms;
-$time-animation-icon: $time-transition + 0ms;
+%hover-effects {
+  transition: all $time-animation ease;
 
-.move-hover {
-  $moveX: 15px;
-  $moveY: 0;
-  $scale: 2;
-
-  transform: translate($moveX, $moveX) scale($scale);
+  &:hover {
+    transform: translateY($hover-translate-y);
+    background-color: $primary;
+  }
 }
