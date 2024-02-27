@@ -8,9 +8,11 @@ import {
   faExchangeAlt,
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import ProductImage from '../ProductImage/ProductImage';
+import { addProductToCompare } from '../../../redux/compareRedux';
 
 const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category }) => {
   const favoriteButtonActive = clsx('outline', {
@@ -19,7 +21,12 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category
   const compareButtonActive = clsx('outline', {
     [styles.compare]: compare,
   });
+  /*const dispatch = useDispatch();
+  const product = { name };
 
+  const addToCompare = () => {
+    dispatch(addProductToCompare(product));
+  };*/
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
@@ -52,7 +59,11 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category
           <Button variant='outline' className={favoriteButtonActive}>
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline' className={compareButtonActive}>
+          <Button
+            variant='outline'
+            /*onClick={addToCompare}*/
+            className={compareButtonActive}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>

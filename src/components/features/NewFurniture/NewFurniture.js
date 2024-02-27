@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import CompareProducts from '../../views/CompareProducts/CompareProducts';
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
@@ -102,6 +102,9 @@ class NewFurniture extends React.Component {
                   </div>
                 ))}
             </div>
+            {/*<div className={styles.compare}>
+              <CompareProducts /> 
+            </div> */}
           </div>
         </div>
       </Swipeable>
