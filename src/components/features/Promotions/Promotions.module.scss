@@ -60,10 +60,12 @@
   }
 
   .rightPanel {
+    height: 100%;
+    row-gap: 30px;
 
     .rightUpper {
       background-color: aqua;
-      margin-left: 15px;
+      flex: 1;
 
       .content {
         width: 50%;
@@ -72,7 +74,7 @@
 
     .rightBottom {
       background-color: bisque;
-      margin-left: 15px;
+      flex: 1;
     }
   }
 

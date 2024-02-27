@@ -49,26 +49,30 @@ const Promotions = () => {
               </div>
             </div>
           </div>
-          <div className={clsx('col-sm-6 p-0 d-flex flex-column', styles.rightPanel)}>
-            <div className={clsx('', styles.rightUpper)}>
-              <div
-                className={clsx(styles.bkgImage)}
-                style={{
-                  backgroundImage: `url(${rightUpperPanelImageProps.filePath})`,
-                }}
-              >
-                <div className={styles.content}>
-                  <p>Guest room</p>
-                  <p>Sofa</p>
-                  <p>-20%</p>
+          <div className={clsx('col-sm-6')}>
+            <div className={clsx('d-flex flex-column', styles.rightPanel)}>
+              <div className={clsx('', styles.rightUpper)}>
+                <div
+                  className={clsx(styles.bkgImage)}
+                  style={{
+                    backgroundImage: `url(${rightUpperPanelImageProps.filePath})`,
+                  }}
+                >
+                  <div className={styles.content}>
+                    <p>Guest room</p>
+                    <p>Sofa</p>
+                    <p>-20%</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              className={clsx('', styles.bkgImage, styles.rightBottom)}
-              style={{ backgroundImage: `url(${rightBottomPanelImageProps.filePath})` }}
-            >
-              RIGHT BOTTOM
+              <div
+                className={clsx('', styles.bkgImage, styles.rightBottom)}
+                style={{
+                  backgroundImage: `url(${rightBottomPanelImageProps.filePath})`,
+                }}
+              >
+                RIGHT BOTTOM
+              </div>
             </div>
           </div>
         </div>
