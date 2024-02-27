@@ -15,3 +15,17 @@ $form-border-color: #292929;
 $price-color:  #ffffff;
 $price-color-original: #b1b0b0;
 $price-color-background: #2a2a2a;
+
+$time-animation: 250ms;
+$background-color-time-animation: 250ms;
+$text-color-time-animation: 250ms;
+$hover-translate-y: 5px;
+
+%hover-effects {
+  transition: all $time-animation ease;
+
+  &:hover {
+    transform: translateY($hover-translate-y);
+    background-color: $primary;
+  }
+}
