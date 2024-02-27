@@ -12,9 +12,9 @@ class NewFurniture extends React.Component {
     this.state = {
       activePage: 0,
       activeCategory: 'bed',
-      showAllProducts: false, // New state to control if all products should be displayed
-      isMobile: window.innerWidth <= 768, // New state to determine if the device is a mobile phone
-      isTablet: window.innerWidth > 768 && window.innerWidth <= 992, // New state to determine if the device is a tablet
+      showAllProducts: false,
+      isMobile: window.innerWidth <= 768,
+      isTablet: window.innerWidth > 768 && window.innerWidth <= 992,
     };
 
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
@@ -51,7 +51,6 @@ class NewFurniture extends React.Component {
     this.setState({ activeCategory: newCategory });
   }
 
-  // New function used to toggle all products
   toggleShowAllProducts() {
     this.setState(prevState => ({ showAllProducts: !prevState.showAllProducts }));
   }
@@ -64,7 +63,6 @@ class NewFurniture extends React.Component {
     window.removeEventListener('resize', this.handleResize);
   }
 
-  // Function to handle window resizing
   handleResize() {
     this.setState({
       isMobile: window.innerWidth <= 768,
