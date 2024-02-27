@@ -6,6 +6,7 @@
 .main {
   background-color: $button-main-bg;
   color: $button-text;
+  @extend %hover-effects;
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
@@ -27,6 +28,7 @@
 }
 
 .outline {
+  @extend %hover-effects;
   display: inline-block;
   padding: 5px 10px;
   border: 1px solid $button-outline-primary;

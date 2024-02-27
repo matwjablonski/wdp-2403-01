@@ -9,13 +9,14 @@
 
   &:hover {
     @extend .active;
-    box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+    @extend %hover-effects;
+    box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
     text-decoration: none;
+    background-color: #ffffff;
 
     .iconWrapper {
-
       &::before {
-        box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+        box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
       }
     }
   }

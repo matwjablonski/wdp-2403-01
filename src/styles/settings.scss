@@ -87,3 +87,16 @@ $footer-primary: $orange;
 $form-border-color: $darkGrayTwo;
 $form-text-color: $darkGray;
 $form-icon-color: $orange;
+$time-animation: 250ms;
+$background-color-time-animation: 250ms;
+$text-color-time-animation: 250ms;
+$hover-translate-y: 5px;
+
+%hover-effects {
+  transition: all $time-animation ease;
+
+  &:hover {
+    transform: translateY($hover-translate-y);
+    background-color: $primary;
+  }
+}

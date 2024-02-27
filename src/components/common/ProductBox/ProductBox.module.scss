@@ -5,9 +5,15 @@
   border: 1px solid $productbox-border;
   margin-bottom: 2rem;
 
+  .favorite {
+    background-color: $primary;
+  }
+  .compare {
+    background-color: $primary;
+  }
+
   .photo {
     position: relative;
-    padding: 80% 10px 0 10px;
     background: {
       color: $productbox-photo-bg;
       size: contain;

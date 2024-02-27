@@ -30,6 +30,7 @@
       display: inline-block;
       position: relative;
       color: $header-cart-text;
+      @extend %hover-effects;
 
       .cartIcon {
         background-color: $header-cart-bg;
