@@ -14,6 +14,7 @@ $lightGray: #b6b6b6;
 $lightGrayTwo:  #a9a9a9;
 $lightGrayThree: #f4f5f7;
 $gray: #363636;
+$grayTwo: #b1b0b0;
 $darkerGray: #434343;
 $darkGray: #2a2a2a;
 $darkGrayTwo: #292929;
@@ -83,10 +84,15 @@ $footer-text-main: $white;
 $footer-text-secondary: $lightGrayTwo;
 $footer-primary: $orange;
 
+
 // FORM COLORS
 $form-border-color: $darkGrayTwo;
 $form-text-color: $darkGray;
 $form-icon-color: $orange;
+$price-color: $white;
+$price-color-original: $grayTwo;
+$price-color-background: $darkGray;
+
 $time-animation: 250ms;
 $background-color-time-animation: 250ms;
 $text-color-time-animation: 250ms;
