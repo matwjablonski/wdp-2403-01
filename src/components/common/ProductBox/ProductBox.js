@@ -10,8 +10,20 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import Price from '../Price/Price';
+import ProductImage from '../ProductImage/ProductImage';
 
-const ProductBox = ({ name, price, promo, stars, favorite, compare }) => {
+const ProductBox = ({
+  id,
+  name,
+  price,
+  originalPrice,
+  promo,
+  stars,
+  favorite,
+  compare,
+  category,
+}) => {
   const favoriteButtonActive = clsx('outline', {
     [styles.favorite]: favorite,
   });
@@ -22,6 +34,7 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare }) => {
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
+        <ProductImage name={name} id={id} category={category} />
         {promo && <div className={styles.sale}>{promo}</div>}
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
@@ -55,9 +68,8 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare }) => {
           </Button>
         </div>
         <div className={styles.price}>
-          <Button noHover variant='small'>
-            $ {price}
-          </Button>
+          <Price price={originalPrice} variant='original' />
+          <Price price={price} variant='actual' />
         </div>
       </div>
     </div>
@@ -68,8 +80,11 @@ ProductBox.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
+  originalPrice: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  id: PropTypes.string,
+  category: PropTypes.string,
   favorite: PropTypes.bool,
   compare: PropTypes.bool,
 };

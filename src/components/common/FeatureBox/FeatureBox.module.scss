@@ -2,20 +2,21 @@
 
 .root {
   display: block;
-  border: 1px solid #b6b6b6;
+  border: 1px solid $feature-border;
   text-align: center;
   margin-top: 40px;
   text-decoration: none;
 
   &:hover {
     @extend .active;
-    box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+    @extend %hover-effects;
+    box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
     text-decoration: none;
+    background-color: #ffffff;
 
     .iconWrapper {
-
       &::before {
-        box-shadow: 0 0 12px rgba(33, 33, 33, .2);
+        box-shadow: 0 0 12px rgba(33, 33, 33, 0.2);
       }
     }
   }
@@ -23,7 +24,7 @@
   .iconWrapper {
     height: 60px;
     transform: translateY(-50%);
-    color: $text-color;
+    color: $feature-text-primary;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +36,7 @@
 
     &::before {
       content: "";
-      border: 1px solid #b6b6b6;
+      border: 1px solid $feature-border;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -43,7 +44,7 @@
       width: 76px;
       height: 76px;
       border-radius: 100%;
-      background-color: #ffffff;
+      background-color: $feature-bg;
       z-index: -1;
     }
 
@@ -56,13 +57,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      border: 1px solid #b6b6b6;
+      border: 1px solid $feature-border;
     }
   }
 
   .content {
     text-transform: uppercase;
-    color: rgb(42, 42, 42);
+    color: $feature-text-primary;
     margin-top: -0.5rem;
     letter-spacing: 1px;
     font-weight: 300;
@@ -78,16 +79,16 @@
 
   &.active {
     .iconWrapper {
-      color: #ffffff;
+      color: $feature-active-text;
 
       &::after {
-        background-color: $primary;
-        border-color: $primary;
+        background-color: $feature-active-bg;
+        border-color:$feature-active-bg;
       }
     }
 
     .content {
-      color: $primary;
+      color: $feature-content;
     }
   }
 }
