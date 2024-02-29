@@ -21,12 +21,13 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category
   const compareButtonActive = clsx('outline', {
     [styles.compare]: compare,
   });
-  /*const dispatch = useDispatch();
-  const product = { name };
+  const dispatch = useDispatch();
+  const product = { name, category, id };
 
-  const addToCompare = () => {
+  const addToCompare = e => {
+    e.preventDefault();
     dispatch(addProductToCompare(product));
-  };*/
+  };
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
@@ -61,7 +62,7 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category
           </Button>
           <Button
             variant='outline'
-            /*onClick={addToCompare}*/
+            onClick={addToCompare}
             className={compareButtonActive}
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>

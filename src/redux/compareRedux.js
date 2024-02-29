@@ -1,6 +1,5 @@
 /* selectors */
 export const getAllCompare = state => state.productsCompare;
-
 /* ACTION NAME CREATOR */
 const reducerName = 'productsCompare';
 const createActionName = name => `app/${reducerName}/${name}`;
@@ -14,8 +13,8 @@ export const addProductToCompare = payload => ({
   payload,
   type: ADD_PRODUCT_TO_COMPARE,
 });
-export const removeProductFromCompare = payload => ({
-  payload,
+export const removeProductFromCompare = productName => ({
+  payload: productName,
   type: REMOVE_PRODUCT_FROM_COMPARE,
 });
 
