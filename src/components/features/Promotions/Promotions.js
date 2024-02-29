@@ -33,33 +33,29 @@ const Promotions = () => {
     <div className={styles.root}>
       <div className='container'>
         <div className={clsx('d-flex row', styles.panel)}>
-          <div className={clsx('col-sm-6')}>
-            <div className={clsx(styles.leftPanel)}>
-              <SalesPanel className={clsx('p-4')} sales={leftPanel}>
-                <div className={clsx('d-flex align-items-end', styles.bkg)}>
-                  {getContent(leftPanel)}
-                </div>
+          <div className={clsx('col-sm-6', styles.leftPanel)}>
+            <SalesPanel className={clsx('p-4')} sales={leftPanel}>
+              <div className={clsx('d-flex align-items-end', styles.bkg)}>
+                {getContent(leftPanel)}
+              </div>
+            </SalesPanel>
+          </div>
+          <div className={clsx('col-sm-6 d-flex flex-column', styles.rightPanel)}>
+            <div className={clsx('', styles.rightUpper)}>
+              <SalesPanel
+                className={clsx('d-flex justify-content-end')}
+                sales={rightUpperPanel}
+              >
+                {getContent(rightUpperPanel)}
               </SalesPanel>
             </div>
-          </div>
-          <div className={clsx('col-sm-6')}>
-            <div className={clsx('d-flex flex-column', styles.rightPanel)}>
-              <div className={clsx('', styles.rightUpper)}>
-                <SalesPanel
-                  className={clsx('d-flex justify-content-end')}
-                  sales={rightUpperPanel}
-                >
-                  {getContent(rightUpperPanel)}
-                </SalesPanel>
-              </div>
-              <div className={clsx('', styles.rightBottom)}>
-                <SalesPanel
-                  className={clsx('d-flex justify-content-end')}
-                  sales={rightBottomPanel}
-                >
-                  {getContent(rightBottomPanel)}
-                </SalesPanel>
-              </div>
+            <div className={clsx('', styles.rightBottom)}>
+              <SalesPanel
+                className={clsx('d-flex justify-content-end')}
+                sales={rightBottomPanel}
+              >
+                {getContent(rightBottomPanel)}
+              </SalesPanel>
             </div>
           </div>
         </div>
