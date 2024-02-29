@@ -12,9 +12,16 @@ class NewFurniture extends React.Component {
     this.state = {
       activePage: 0,
       activeCategory: 'bed',
+      showAllProducts: false,
+      isMobile: window.innerWidth <= 768,
+      isTablet: window.innerWidth > 768 && window.innerWidth <= 992,
     };
 
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    this.toggleShowAllProducts = this.toggleShowAllProducts.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
   handlePageSwipe(pageChange) {
@@ -33,7 +40,6 @@ class NewFurniture extends React.Component {
     if (actualPage >= 0 && actualPage < pagesCount) {
       this.setState({ activePage: actualPage });
     }
-    console.log('active page:', pageChange, actualPage, this.state.activePage);
   }
 
   handlePageChange(newPage) {
@@ -44,9 +50,28 @@ class NewFurniture extends React.Component {
     this.setState({ activeCategory: newCategory });
   }
 
+  toggleShowAllProducts() {
+    this.setState(prevState => ({ showAllProducts: !prevState.showAllProducts }));
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleResize() {
+    this.setState({
+      isMobile: window.innerWidth <= 768,
+      isTablet: window.innerWidth > 768 && window.innerWidth <= 992,
+    });
+  }
+
   render() {
     const { categories, products } = this.props;
-    const { activeCategory, activePage } = this.state;
+    const { activeCategory, activePage, showAllProducts } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
@@ -54,7 +79,7 @@ class NewFurniture extends React.Component {
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
       dots.push(
-        <li>
+        <li key={i}>
           <a
             onClick={() => this.handlePageChange(i)}
             className={i === activePage && styles.active}
@@ -63,6 +88,16 @@ class NewFurniture extends React.Component {
           </a>
         </li>
       );
+    }
+
+    let displayedProducts = categoryProducts;
+
+    if (!showAllProducts && this.state.isMobile) {
+      displayedProducts = categoryProducts.slice(activePage * 8, (activePage + 1) * 2);
+    } else if (!showAllProducts && this.state.isTablet) {
+      displayedProducts = categoryProducts.slice(activePage * 8, (activePage + 1) * 3);
+    } else if (!showAllProducts) {
+      displayedProducts = categoryProducts.slice(activePage * 8, (activePage + 1) * 8);
     }
 
     return (
@@ -88,19 +123,21 @@ class NewFurniture extends React.Component {
                     ))}
                   </ul>
                 </div>
-                <div className={'col-auto ' + styles.dots}>
-                  <ul>{dots}</ul>
+                <div
+                  className={'col-auto ' + styles.dots}
+                  onDoubleClick={this.toggleShowAllProducts}
+                >
+                  {!showAllProducts && <ul>{dots}</ul>}
+                  <ul>{showAllProducts && dots}</ul>
                 </div>
               </div>
             </div>
             <div className='row'>
-              {categoryProducts
-                .slice(activePage * 8, (activePage + 1) * 8)
-                .map(item => (
-                  <div key={item.id} className='col-3'>
-                    <ProductBox {...item} />
-                  </div>
-                ))}
+              {displayedProducts.map(item => (
+                <div key={item.id} className='col-6 col-md-4 col-sm-6 col-lg-3'>
+                  <ProductBox {...item} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
