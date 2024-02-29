@@ -37,14 +37,6 @@ class NewFurniture extends React.Component {
     };
   }
 
-  getPagesCount() {
-    const { products, itemsOnPage } = this.props;
-    const { activeCategory } = this.state;
-
-    const categoryProducts = products.filter(item => item.category === activeCategory);
-    return Math.ceil(categoryProducts.length / itemsOnPage);
-  }
-
   handlePageSwipe(pageChange) {
     const { activePage, pagesCount } = this.state;
 
