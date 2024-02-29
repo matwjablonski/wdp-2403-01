@@ -1,8 +1,8 @@
 @import "../../../styles/settings.scss";
 
 .root {
-  box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
-  background-color: #ffffff;
+  box-shadow: 2px 3.464px 6px $blackLowOpacity;
+  background-color: $header-menubar-bg;
 
   :global(.container) > :global(.row) {
     height: 84px;
@@ -21,30 +21,31 @@
         list-style: none;
         display: flex;
         align-items: stretch;
+        @extend %hover-effects;
       }
     }
 
     a {
-      color: $text-color;
+      color: $header-menubar-text;
       text-transform: uppercase;
       font-size: 12px;
       padding: 1rem;
       text-decoration: none;
       display: flex;
       align-items: center;
-      border-top: 4px solid #ffffff;
+      border-top: 4px solid $header-menubar-border;
       font-weight: 500;
       letter-spacing: 1px;
 
       &:hover,
       &.active {
-        background-color: $primary;
-        color: #ffffff;
-        border-color: $primary;
+        background-color: $header-menubar-active-bg;
+        color: $header-menubar-active-text;
+        border-color: $header-menubar-active-bg;
       }
 
       &.active {
-        border-color: $text-color;
+        border-color: $header-menubar-text;
       }
     }
   }

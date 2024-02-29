@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import styles from './NewFurniture.module.scss';
+import { clsx } from 'clsx';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import { getItemsOnPage } from '../../../utils/viewMode';
@@ -16,6 +17,9 @@ class NewFurniture extends React.Component {
       activeCategory: 'bed',
     };
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleCategoryChange = this.handleCategoryChange.bind(this);
+    this.toggleShowAllProducts = this.toggleShowAllProducts.bind(this);
   }
 
   handlePageSwipe(pageChange) {
@@ -44,6 +48,18 @@ class NewFurniture extends React.Component {
     this.setState({ activeCategory: newCategory });
   }
 
+  toggleShowAllProducts() {
+    this.setState(prevState => ({ showAllProducts: !prevState.showAllProducts }));
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
   render() {
     const { categories, products, itemsOnPage } = this.props;
     const { activeCategory, activePage } = this.state;
@@ -54,7 +70,7 @@ class NewFurniture extends React.Component {
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
       dots.push(
-        <li>
+        <li key={i}>
           <a
             onClick={() => this.handlePageChange(i)}
             className={i === activePage && styles.active}
@@ -88,16 +104,26 @@ class NewFurniture extends React.Component {
                     ))}
                   </ul>
                 </div>
-                <div className={'col-auto ' + styles.dots}>
+                <div
+                  className={'col-auto ' + styles.dots}
+                  onDoubleClick={this.toggleShowAllProducts}
+                >
                   <ul>{dots}</ul>
                 </div>
               </div>
             </div>
-            <div className='row'>
+            <div className='row justify-content-center'>
               {categoryProducts
                 .slice(activePage * itemsOnPage, (activePage + 1) * itemsOnPage)
                 .map(item => (
-                  <div key={item.id} className='col col-sm-6 col-md-3'>
+                  <div
+                    key={item.id}
+                    className={clsx(
+                      'col-sm-6 col-md-4 col-lg-3',
+                      styles.colXSmall,
+                      styles.colXXSmall
+                    )}
+                  >
                     <ProductBox {...item} />
                   </div>
                 ))}
@@ -137,8 +163,7 @@ NewFurniture.defaultProps = {
 };
 
 function mapStateToProps(state) {
-  const activeViewMode = state.activeViewMode;
-  return getItemsOnPage(activeViewMode);
+  return getItemsOnPage(state.activeViewMode);
 }
 
 export default connect(mapStateToProps)(NewFurniture);
