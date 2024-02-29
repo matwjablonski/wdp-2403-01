@@ -13,19 +13,21 @@ const Promotions = () => {
   };
   const promotions = useSelector(getAll);
 
+  const leftPanel = promotions.find(item => item.type === panelType.left);
+  const rightUpperPanel = promotions.find(item => item.type === panelType.rightUpper);
+  const rightBottomPanel = promotions.find(item => item.type === panelType.rightBottom);
+
   const leftPanelImageProps = {
     alt: panelType.left,
-    filePath: `${srcDir}${
-      promotions.find(item => item.type === panelType.left).filePath
-    }`,
+    filePath: `${srcDir}${leftPanel.filePath}`,
   };
   const rightUpperPanelImageProps = {
     alt: panelType.rightUpper,
-    filePath: '', //`${srcDir}${promotions.find(item => item.type === panelType.rightUpper).filePath}`,
+    filePath: '', //`${srcDir}${rightUpperPanel.filePath}`,
   };
   const rightBottomPanelImageProps = {
     alt: panelType.rightBottom,
-    filePath: '', //`${srcDir}${promotions.find((item => item.type === panelType.rightBottom)).filePath}`,
+    filePath: '', //`${srcDir}${rightBottomPanel.filePath}`,
   };
 
   return (
@@ -39,9 +41,9 @@ const Promotions = () => {
             >
               <div className={clsx('d-flex align-items-end', styles.bkg)}>
                 <div className={styles.content}>
-                  <p>Guest room</p>
-                  <p>Sofa</p>
-                  <p>-20%</p>
+                  <p>{leftPanel.title}</p>
+                  <p>{leftPanel.subtitle}</p>
+                  <p>{leftPanel.discount}</p>
                 </div>
               </div>
             </div>
@@ -56,9 +58,12 @@ const Promotions = () => {
                   }}
                 >
                   <div className={styles.content}>
-                    <p>Office chair</p>
-                    <p>Collection</p>
-                    <p>$200.00</p>
+                    <p>
+                      <span>{rightUpperPanel.title.split(' ')[0]}</span>{' '}
+                      {rightUpperPanel.title.split(' ')[1]}
+                    </p>
+                    <p>{rightUpperPanel.subtitle}</p>
+                    <p>{rightUpperPanel.discount}</p>
                   </div>
                 </div>
               </div>
@@ -70,8 +75,12 @@ const Promotions = () => {
                   }}
                 >
                   <div className={styles.content}>
-                    <p>Special collection</p>
-                    <p>Save up 45% of furniture</p>
+                    <p>
+                      <span>{rightBottomPanel.title.split(' ')[0]}</span>{' '}
+                      {rightBottomPanel.title.split(' ')[1]}
+                    </p>
+                    <p>{rightBottomPanel.subtitle}</p>
+                    <p>{rightBottomPanel.discount}</p>
                   </div>
                 </div>
               </div>

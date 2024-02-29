@@ -1,7 +1,6 @@
 @import "../../../styles/settings.scss";
 
 .root {
- // display: flex;
   padding: 1rem 0;
 
   .bkgImage {
@@ -16,8 +15,6 @@
   }
 
   .panel {
-  //  column-gap: 10px;
-
     @media only screen and (max-width: 575.5px) {
       row-gap: 10px;
     }
@@ -29,35 +26,31 @@
     height: 300px;
 
     .bkg {
-      background-color: rgba(139, 134, 134, 0.8);
+      background-color: rgba(104, 100, 100, 0.5);
       height: 100%;
     }
 
     .content {
       padding-left: 15px;
       padding-bottom: 15px;
-    }
 
-    p {
-      font-size: 25px;
-      font-weight: 600;
-      line-height: 1.8rem;
-      letter-spacing: .25rem;
-      margin-right: auto;
-      margin-bottom: 0;
-      text-transform: uppercase;
-      padding: 0;
-    }
+      p {
+        margin-right: auto;
+        margin-bottom: 0;
+        line-height: 1.8rem;
+        font-weight: bold;
+      }
 
-    p:nth-of-type(2){
-      font-weight: bold;
-      font-size: 2rem;
-    }
+      p:nth-of-type(2){
+        font-weight: bold;
+        font-size: 2rem;
+      }
 
-    p:last-child{
-      margin-top: 5px;
-      padding: 5px;
-      border: 3px solid white;
+      p:last-child{
+        margin-top: 5px;
+        padding: 5px;
+        border: 3px solid white;
+      }
     }
   }
 
@@ -69,66 +62,56 @@
     }
 
     .rightUpper {
-      background-color: rgb(181, 189, 223);
+      background-color: rgb(235, 238, 252);
       flex: 1;
       padding: 10px;
 
       .content {
         width: 70%;
         justify-content: center;
-      }
 
-      p {
-        font-size: 25px;
-        font-weight: 600;
-        line-height: 1.5rem;
-        margin-right: auto;
-        margin-bottom: 0;
-        text-transform: uppercase;
-        padding: 0;
-      }
+        p {
+          margin-right: auto;
+          letter-spacing: .01rem;
+        }
 
-      p:nth-of-type(2){
-        font-weight: 600;
-        font-size: 0.75rem;
-        letter-spacing: .2rem;
-      }
+        p:nth-of-type(2){
+          font-weight: 700;
+          font-size: 0.75rem;
+          letter-spacing: .15rem;
+        }
 
-      p:last-child{
-        margin-top: 5px;
-        color: $primary;
+        p:last-child{
+          font-weight: 600;
+          margin-top: 5px;
+          color: $primary;
+        }
       }
     }
 
     .rightBottom {
-      background-color: rgb(243, 213, 224);
+      background-color: rgb(247, 229, 235);
       flex: 1;
       padding: 10px;
 
       .content {
         width: 70%;
         justify-content: center;
-      }
+        text-align: end;
 
-      p {
-        font-size: 25px;
-        font-weight: 600;
-        line-height: 1.5rem;
-        margin-left: auto;
-        margin-bottom: 0;
-        text-transform: uppercase;
-        padding: 0;
-      }
+        p {
+          margin-left: auto;
+        }
 
-      p:nth-of-type(2){
-        font-weight: 600;
-        font-size: 0.75rem;
-        letter-spacing: .2rem;
-      }
+        p:first-of-type{
+          color: $primary;
+        }
 
-      p:last-child{
-        margin-top: 5px;
-        color: $primary;
+        p:last-child{
+          font-weight: 600;
+          margin-top: 5px;
+          font-size: 12px;
+        }
       }
     }
   }
@@ -138,6 +121,19 @@
     flex-direction: column;
     width: 100%;
     text-align: start;
-  }
 
+    p {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.2rem;
+      letter-spacing: .1rem;
+      margin-bottom: 0;
+      text-transform: uppercase;
+      padding: 0;
+
+      span {
+        font-weight: 800;
+      }
+    }
+  }
 }

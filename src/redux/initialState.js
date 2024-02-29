@@ -24,8 +24,8 @@ const initialState = {
     {
       type: 'right-bottom-panel',
       title: 'special collection',
-      subtitle: 'save up x of furniture',
-      discount: '45%',
+      subtitle: '',
+      discount: 'Save up 45% of furniture',
       filePath: '/images/promotions/right-bottom-panel.jpg',
     },
   ],
