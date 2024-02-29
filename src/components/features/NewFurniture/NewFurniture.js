@@ -19,15 +19,34 @@ class NewFurniture extends React.Component {
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
-    this.toggleShowAllProducts = this.toggleShowAllProducts.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, current_state) {
+    const { products, itemsOnPage } = props;
+    const { activeCategory, pagesCount, activePage } = current_state;
+
+    const categoryProducts = products.filter(item => item.category === activeCategory);
+    const updatedPagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
+    const updatedActivePage = pagesCount === updatedPagesCount ? activePage : 0;
+
+    return {
+      current_state,
+      pagesCount: updatedPagesCount,
+      activePage: updatedActivePage,
+      categoryProducts,
+    };
+  }
+
+  getPagesCount() {
+    const { products, itemsOnPage } = this.props;
+    const { activeCategory } = this.state;
+
+    const categoryProducts = products.filter(item => item.category === activeCategory);
+    return Math.ceil(categoryProducts.length / itemsOnPage);
   }
 
   handlePageSwipe(pageChange) {
-    const { products, itemsOnPage } = this.props;
-    const { activeCategory, activePage } = this.state;
-
-    const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
+    const { activePage, pagesCount } = this.state;
 
     let actualPage = activePage;
     if (pageChange === 'increment') {
@@ -48,24 +67,9 @@ class NewFurniture extends React.Component {
     this.setState({ activeCategory: newCategory });
   }
 
-  toggleShowAllProducts() {
-    this.setState(prevState => ({ showAllProducts: !prevState.showAllProducts }));
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
   render() {
-    const { categories, products, itemsOnPage } = this.props;
-    const { activeCategory, activePage } = this.state;
-
-    const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
+    const { categories, itemsOnPage } = this.props;
+    const { activeCategory, categoryProducts, activePage, pagesCount } = this.state;
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
