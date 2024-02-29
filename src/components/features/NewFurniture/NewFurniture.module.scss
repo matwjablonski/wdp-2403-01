@@ -18,6 +18,16 @@
   .panelBar {
     margin-bottom: 30px;
     position: relative;
+    display: flex;
+    gap: 10px 0;
+    align-items: end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (max-width: 600px) {
+      justify-content: center;
+     }
 
     :global(.row) > * {
       border-bottom: 4px solid $panelbar-border;
@@ -80,16 +90,18 @@
     }
 
     .dots {
-      position: absolute;
-      right: 0;
-      top: 0;
+      display: flex;
+      align-self: center;
 
       ul {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 5px;
+        align-items: center;
         margin: 0;
-        padding: 0 0 0 1rem;
+        padding: 2px 0 0 1rem;
         list-style: none;
         background-color: $panelbar-bg;
-        transform: translateY(15px);
 
         li {
           display: inline-block;
