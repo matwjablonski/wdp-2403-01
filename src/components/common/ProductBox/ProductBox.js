@@ -11,10 +11,21 @@ import {
 import { useDispatch } from 'react-redux';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import Price from '../Price/Price';
 import ProductImage from '../ProductImage/ProductImage';
 import { addProductToCompare } from '../../../redux/compareRedux';
 
-const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category }) => {
+const ProductBox = ({
+  id,
+  name,
+  price,
+  originalPrice,
+  promo,
+  stars,
+  favorite,
+  compare,
+  category,
+}) => {
   const favoriteButtonActive = clsx('outline', {
     [styles.favorite]: favorite,
   });
@@ -69,9 +80,8 @@ const ProductBox = ({ name, price, promo, stars, favorite, compare, id, category
           </Button>
         </div>
         <div className={styles.price}>
-          <Button noHover variant='small'>
-            $ {price}
-          </Button>
+          <Price price={originalPrice} variant='original' />
+          <Price price={price} variant='actual' />
         </div>
       </div>
     </div>
@@ -82,6 +92,7 @@ ProductBox.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
+  originalPrice: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
   id: PropTypes.string,
