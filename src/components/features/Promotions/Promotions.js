@@ -33,11 +33,11 @@ const Promotions = () => {
       <div className='container'>
         <div className={clsx('d-flex row', styles.panel)}>
           <div className={clsx('col-sm-6')}>
-            <div className={styles.leftPanel}>
-              <div
-                className={clsx('d-flex align-items-end', styles.bkgImage)}
-                style={{ backgroundImage: `url(${leftPanelImageProps.filePath})` }}
-              >
+            <div
+              className={clsx(styles.leftPanel, styles.bkgImage)}
+              style={{ backgroundImage: `url(${leftPanelImageProps.filePath})` }}
+            >
+              <div className={clsx('d-flex align-items-end', styles.bkg)}>
                 <div className={styles.content}>
                   <p>Guest room</p>
                   <p>Sofa</p>
