@@ -16,17 +16,17 @@ const initialState = {
     },
     {
       type: 'right-upper-panel',
-      title: 'office chair',
+      title: 'office#chair',
       subtitle: 'collection',
       discount: '$200.00',
-      filePath: '/images/promotions/right-upper-panel.jpg',
+      filePath: '', //'/images/promotions/right-upper-panel.jpg',
     },
     {
       type: 'right-bottom-panel',
-      title: 'special collection',
+      title: 'special#collection',
       subtitle: '',
       discount: 'Save up 45% of furniture',
-      filePath: '/images/promotions/right-bottom-panel.jpg',
+      filePath: '', //'/images/promotions/right-bottom-panel.jpg',
     },
   ],
   products: [

@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { getAll } from '../../../redux/promotionsRedux';
 import styles from './Promotions.module.scss';
 import { clsx } from 'clsx';
+import SalesPanel from '../../common/SalesPanel/SalesPanel';
 
 const Promotions = () => {
-  const srcDir = process.env.PUBLIC_URL;
   const panelType = {
     left: 'left-panel',
     rightUpper: 'right-upper-panel',
@@ -17,17 +17,16 @@ const Promotions = () => {
   const rightUpperPanel = promotions.find(item => item.type === panelType.rightUpper);
   const rightBottomPanel = promotions.find(item => item.type === panelType.rightBottom);
 
-  const leftPanelImageProps = {
-    alt: panelType.left,
-    filePath: `${srcDir}${leftPanel.filePath}`,
-  };
-  const rightUpperPanelImageProps = {
-    alt: panelType.rightUpper,
-    filePath: '', //`${srcDir}${rightUpperPanel.filePath}`,
-  };
-  const rightBottomPanelImageProps = {
-    alt: panelType.rightBottom,
-    filePath: '', //`${srcDir}${rightBottomPanel.filePath}`,
+  const getContent = panel => {
+    return (
+      <div className={styles.content}>
+        <p>
+          <span>{panel.title.split('#')[0]}</span> {panel.title.split('#')[1]}
+        </p>
+        <p>{panel.subtitle}</p>
+        <p>{panel.discount}</p>
+      </div>
+    );
   };
 
   return (
@@ -35,54 +34,31 @@ const Promotions = () => {
       <div className='container'>
         <div className={clsx('d-flex row', styles.panel)}>
           <div className={clsx('col-sm-6')}>
-            <div
-              className={clsx(styles.leftPanel, styles.bkgImage)}
-              style={{ backgroundImage: `url(${leftPanelImageProps.filePath})` }}
-            >
-              <div className={clsx('d-flex align-items-end', styles.bkg)}>
-                <div className={styles.content}>
-                  <p>{leftPanel.title}</p>
-                  <p>{leftPanel.subtitle}</p>
-                  <p>{leftPanel.discount}</p>
+            <div className={clsx(styles.leftPanel)}>
+              <SalesPanel className={clsx('p-4')} sales={leftPanel}>
+                <div className={clsx('d-flex align-items-end', styles.bkg)}>
+                  {getContent(leftPanel)}
                 </div>
-              </div>
+              </SalesPanel>
             </div>
           </div>
           <div className={clsx('col-sm-6')}>
             <div className={clsx('d-flex flex-column', styles.rightPanel)}>
               <div className={clsx('', styles.rightUpper)}>
-                <div
-                  className={clsx('d-flex justify-content-end', styles.bkgImage)}
-                  style={{
-                    backgroundImage: `url(${rightUpperPanelImageProps.filePath})`,
-                  }}
+                <SalesPanel
+                  className={clsx('d-flex justify-content-end')}
+                  sales={rightUpperPanel}
                 >
-                  <div className={styles.content}>
-                    <p>
-                      <span>{rightUpperPanel.title.split(' ')[0]}</span>{' '}
-                      {rightUpperPanel.title.split(' ')[1]}
-                    </p>
-                    <p>{rightUpperPanel.subtitle}</p>
-                    <p>{rightUpperPanel.discount}</p>
-                  </div>
-                </div>
+                  {getContent(rightUpperPanel)}
+                </SalesPanel>
               </div>
               <div className={clsx('', styles.rightBottom)}>
-                <div
-                  className={clsx('d-flex justify-content-end', styles.bkgImage)}
-                  style={{
-                    backgroundImage: `url(${rightBottomPanelImageProps.filePath})`,
-                  }}
+                <SalesPanel
+                  className={clsx('d-flex justify-content-end')}
+                  sales={rightBottomPanel}
                 >
-                  <div className={styles.content}>
-                    <p>
-                      <span>{rightBottomPanel.title.split(' ')[0]}</span>{' '}
-                      {rightBottomPanel.title.split(' ')[1]}
-                    </p>
-                    <p>{rightBottomPanel.subtitle}</p>
-                    <p>{rightBottomPanel.discount}</p>
-                  </div>
-                </div>
+                  {getContent(rightBottomPanel)}
+                </SalesPanel>
               </div>
             </div>
           </div>

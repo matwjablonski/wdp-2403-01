@@ -3,17 +3,6 @@
 .root {
   padding: 1rem 0;
 
-  .bkgImage {
-    background-repeat: no-repeat;
-    background-position: 0% 0%;
-    background-size: 100% 100%;
-    height: 100%;
-
-    @media only screen and (max-width: 575.5px) {
-      height: 150px;
-    }
-  }
-
   .panel {
     @media only screen and (max-width: 575.5px) {
       row-gap: 10px;
@@ -22,7 +11,6 @@
 
   .leftPanel {
     color: white;
-    padding: 30px;
     height: 300px;
 
     .bkg {
@@ -57,6 +45,7 @@
   .rightPanel {
     height: 100%;
     row-gap: 30px;
+
     @media only screen and (max-width: 575.5px) {
       row-gap: 10px;
     }
@@ -64,11 +53,14 @@
     .rightUpper {
       background-color: rgb(235, 238, 252);
       flex: 1;
-      padding: 10px;
 
       .content {
         width: 70%;
         justify-content: center;
+
+        @media only screen and (max-width: 575.5px) {
+          height: 150px;
+        }
 
         p {
           margin-right: auto;
@@ -92,12 +84,16 @@
     .rightBottom {
       background-color: rgb(247, 229, 235);
       flex: 1;
-      padding: 10px;
 
       .content {
         width: 70%;
         justify-content: center;
         text-align: end;
+        padding-right: 10px;
+
+        @media only screen and (max-width: 575.5px) {
+          height: 150px;
+        }
 
         p {
           margin-left: auto;
