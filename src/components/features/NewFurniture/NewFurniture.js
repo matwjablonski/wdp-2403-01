@@ -13,6 +13,7 @@ class NewFurniture extends React.Component {
       activePage: 0,
       activeCategory: 'bed',
       isFading: false,
+      fadeTime: parseInt(styles.timeAnimation),
       showAllProducts: false,
       isMobile: window.innerWidth <= 768,
       isTablet: window.innerWidth > 768 && window.innerWidth <= 992,
@@ -44,24 +45,22 @@ class NewFurniture extends React.Component {
   }
 
   handlePageChange(newPage) {
-    this.setState({ isFading: true }, () => {
-      setTimeout(() => {
-        this.setState({
-          activePage: newPage,
-          isFading: false,
-        });
-      }, 500);
-    });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activePage: newPage,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
   handleCategoryChange(newCategory) {
-    this.setState({ isFading: true }, () => {
-      setTimeout(() => {
-        this.setState({
-          activeCategory: newCategory,
-          isFading: false,
-        });
-      }, 500);
-    });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
 
   toggleShowAllProducts() {
