@@ -33,7 +33,7 @@ const ProductBox = ({
     [styles.compare]: compare,
   });
   const dispatch = useDispatch();
-  const product = { name, category, id };
+  const product = { name, category, id, price };
 
   const addToCompare = e => {
     e.preventDefault();
