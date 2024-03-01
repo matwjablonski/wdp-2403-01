@@ -10,11 +10,11 @@
   }
 
   .leftPanel {
-    color: white;
+    color: $promotions-secondary-color;
     height: 300px;
 
     .bkg {
-      background-color: rgba(104, 100, 100, 0.5);
+      background-color: $promotions-first-bkg-color;
       height: 100%;
     }
 
@@ -37,7 +37,7 @@
       p:last-child{
         margin-top: 5px;
         padding: 5px;
-        border: 3px solid white;
+        border: 3px solid $promotions-secondary-color;
       }
     }
   }
@@ -50,7 +50,7 @@
     }
 
     .rightUpper {
-      background-color: rgb(235, 238, 252);
+      background-color: $promotions-second-bkg-color;
       flex: 1;
 
       .content {
@@ -75,13 +75,13 @@
         p:last-child{
           font-weight: 600;
           margin-top: 5px;
-          color: $primary;
+          color: $promotions-primary-color;
         }
       }
     }
 
     .rightBottom {
-      background-color: rgb(247, 229, 235);
+      background-color: $promotions-three-bkg-color;
       flex: 1;
 
       .content {
@@ -99,7 +99,7 @@
         }
 
         p:first-of-type{
-          color: $primary;
+          color: $promotions-primary-color;
         }
 
         p:last-child{

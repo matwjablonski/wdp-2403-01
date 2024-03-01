@@ -6,16 +6,11 @@ import { clsx } from 'clsx';
 import SalesPanel from '../../common/SalesPanel/SalesPanel';
 
 const Promotions = () => {
-  const panelType = {
-    left: 'left-panel',
-    rightUpper: 'right-upper-panel',
-    rightBottom: 'right-bottom-panel',
-  };
   const promotions = useSelector(getAll);
 
-  const leftPanel = promotions.find(item => item.type === panelType.left);
-  const rightUpperPanel = promotions.find(item => item.type === panelType.rightUpper);
-  const rightBottomPanel = promotions.find(item => item.type === panelType.rightBottom);
+  const leftPanel = promotions.find(item => item.type === 'left-panel');
+  const rightUpperPanel = promotions.find(item => item.type === 'right-upper-panel');
+  const rightBottomPanel = promotions.find(item => item.type === 'right-bottom-panel');
 
   const getContent = panel => {
     return (
