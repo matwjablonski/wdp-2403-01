@@ -14,14 +14,12 @@ export const logo = (
 );
 
 export const cart = (
-  <div className={`col text-center ${styles.cart}`}>
-    <a href='#' className={styles.cartBox}>
-      <div className={styles.cartIcon}>
-        <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
-      </div>
-      <div className={styles.cartCounter}>0</div>
-    </a>
-  </div>
+  <a href='#' className={styles.cartBox}>
+    <div className={styles.cartIcon}>
+      <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
+    </div>
+    <div className={styles.cartCounter}>0</div>
+  </a>
 );
 export const phoneNumber = (
   <p>

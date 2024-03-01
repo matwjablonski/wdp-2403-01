@@ -16,25 +16,14 @@ const CompanyClaim = () => {
       <div className='container'>
         <div className={`row align-items-center ${styles.desktop}`}>
           <div className={`col text-left ${styles.phoneNumber}`}>{phoneNumber}</div>
-          <div className='col text-center'>
-            <a href='#'>
-              <img src='/images/logo.png' alt='Bazar' />
-            </a>
-          </div>
-          <div className={`col text-right ${styles.cart}`}>
-            <a href='#' className={styles.cartBox}>
-              <div className={styles.cartIcon}>
-                <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
-              </div>
-              <div className={styles.cartCounter}>0</div>
-            </a>
-          </div>
+          {logo}
+          <div className={`col text-right ${styles.cart}`}>{cart}</div>
         </div>
 
         <MobileCompanyClaim>
           {logo}
           <div className={`col mt-3`}>
-            {cart}
+            <div className={`col text-center ${styles.cart}`}>{cart}</div>
             <div className={`col text-center ${styles.phoneNumber}`}>{phoneNumber}</div>
           </div>
         </MobileCompanyClaim>
