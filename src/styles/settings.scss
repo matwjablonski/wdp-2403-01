@@ -1,13 +1,108 @@
+// COLORS VARIABLES MUST NOT BE USED IN FILES, PLEASE USE ELEMENTS VARIABLES
+
+//SIZES
 $base-padding: 24px;
 
-$header-topbar-bg: #434343;
-$header-bg: #363636;
+// COLORS 
+$white: #ffffff;
+$blackLowOpacity: rgba(1, 2, 2, 0.2); 
+$lighterGrayOne: #d8d8d8;
+$lighterGrayTwo: #e0e3ed;
+$lighterGrayThree: #e2e2e2;
+$lighterGrayFour: #e1e1e1;
+$lightGray: #b6b6b6;
+$lightGrayTwo:  #a9a9a9;
+$lightGrayThree: #f4f5f7;
+$gray: #363636;
+$grayTwo: #b1b0b0;
+$darkerGray: #434343;
+$darkGray: #2a2a2a;
+$darkGrayTwo: #292929;
+$orange: #d58e32;
 
-$footer-claim-bg: #2a2a2a;
-$footer-bg: #363636;
+// BUTTONS
+$button-main-bg: $darkGray;
+$button-text: $white;
+$button-outline-primary: $darkGray;
+$button-hover-bg: $orange;
 
-$primary: #d58e32;
+// HEADER COLORS VARIABLES
+$header-bg: $gray;
 
-$text-color: #2a2a2a;
+// HEADER TOPBAR
+$header-topbar-bg: $darkerGray;
+$header-topbar-text: $white;
+$header-topbar-primary: $orange;
 
-$form-border-color: #292929;
+// HEADER CLAIM SECTION
+$header-claim-primary: $orange;
+$header-claim-text: $lighterGrayOne;
+
+// HEADER CART
+$header-cart-text: $white;
+$header-cart-bg: $orange;
+$header-cart-counter-bg: $gray;
+$header-cart-counter-text: $lighterGrayTwo;
+
+// HEADER MENUBAR
+$header-menubar-bg: $white;
+$header-menubar-text: $darkGray;
+$header-menubar-active-bg: $orange;
+$header-menubar-active-text: $white;
+$header-menubar-shadow: $blackLowOpacity;
+$header-menubar-border: $white;
+
+// NEW FURNITURE SECTION COLORS
+$panelbar-bg: $white;
+$panelbar-primary: $orange;
+$panelbar-border: $lighterGrayThree;
+$panelbar-text: $darkGray;
+$panelbar-link-bg: $lighterGrayFour;
+
+// FEATURE BOX COLORS
+$feature-bg: $white;
+$feature-border: $lightGray;
+$feature-text-primary: $darkGray;
+$feature-active-bg: $orange;
+$feature-active-text: $white;
+$feature-content: $orange;
+
+// PRODUCT BOX COLORS
+$productbox-primary: $orange;
+$productbox-bg: $white;
+$productbox-text-primary: $white;
+$productbox-border: $lighterGrayFour;
+$productbox-sale-bg: $darkGrayTwo;
+$productbox-stars-clr: $darkGray;
+$productbox-line: $darkGray;
+$productbox-photo-bg: $lightGrayThree;
+
+// FOOTER COLORS
+$footer-claim-bg: $darkGray;
+$footer-bg: $gray;
+$footer-text-main: $white;
+$footer-text-secondary: $lightGrayTwo;
+$footer-primary: $orange;
+
+
+// FORM COLORS
+$form-border-color: $darkGrayTwo;
+$form-text-color: $darkGray;
+$form-icon-color: $orange;
+$price-color: $white;
+$price-color-original: $grayTwo;
+$price-color-background: $darkGray;
+
+$time-animation: 250ms;
+$background-color-time-animation: 250ms;
+$text-color-time-animation: 250ms;
+$hover-translate-y: 5px;
+
+%hover-effects {
+  transition: all $time-animation ease;
+
+  &:hover {
+    transform: translateY($hover-translate-y);
+    background-color: $orange;
+  }
+}

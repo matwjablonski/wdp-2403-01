@@ -12,12 +12,12 @@
       margin: 0;
       font-size: 17px;
       line-height: 42px;
-      color: rgb(216, 216, 216);
+      color: $header-claim-text;
       font-weight: 500;
 
       .icon {
         font-size: 32px;
-        color: $primary;
+        color: $header-claim-primary;
         vertical-align: middle;
         margin-top: -3px;
         margin-right: 0.8rem;
@@ -29,11 +29,13 @@
     .cartBox {
       display: inline-block;
       position: relative;
-      color: #ffffff;
       padding-right: 40px;
+      color: $header-cart-text;
+      @extend %hover-effects;
+
 
       .cartIcon {
-        background-color: $primary;
+        background-color: $header-cart-bg;
         width: 55px;
         height: 50px;
         border-radius: 3px;
@@ -51,12 +53,12 @@
         width: 28px;
         height: 27px;
         border-radius: 14px;
-        background-color: $header-bg;
+        background-color: $header-cart-counter-bg;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 14px;
-        color: rgb(224, 227, 237);
+        color: $header-cart-counter-text;
         position: absolute;
         top: 50%;
         right: 40%;
@@ -65,7 +67,7 @@
 
       &:hover {
         .cartIcon {
-          background-color: lighten($primary, 10%);
+          background-color: lighten($header-claim-primary, 10%);
         }
       }
 
