@@ -29,24 +29,24 @@ const Promotions = () => {
       <div className='container'>
         <div className={clsx('d-flex row', styles.panel)}>
           <div className={clsx('col-sm-6', styles.leftPanel)}>
-            <SalesPanel className={clsx('p-4')} sales={leftPanel}>
+            <SalesPanel className='p-4' sales={leftPanel}>
               <div className={clsx('d-flex align-items-end', styles.bkg)}>
                 {getContent(leftPanel)}
               </div>
             </SalesPanel>
           </div>
           <div className={clsx('col-sm-6 d-flex flex-column', styles.rightPanel)}>
-            <div className={clsx('', styles.rightUpper)}>
+            <div className={styles.rightUpper}>
               <SalesPanel
-                className={clsx('d-flex justify-content-end')}
+                className='d-flex justify-content-end'
                 sales={rightUpperPanel}
               >
                 {getContent(rightUpperPanel)}
               </SalesPanel>
             </div>
-            <div className={clsx('', styles.rightBottom)}>
+            <div className={styles.rightBottom}>
               <SalesPanel
-                className={clsx('d-flex justify-content-end')}
+                className='d-flex justify-content-end'
                 sales={rightBottomPanel}
               >
                 {getContent(rightBottomPanel)}
