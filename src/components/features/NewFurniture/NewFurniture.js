@@ -21,16 +21,16 @@ class NewFurniture extends React.Component {
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
   }
 
-  static getDerivedStateFromProps(props, current_state) {
+  static getDerivedStateFromProps(props, currentState) {
     const { products, itemsOnPage } = props;
-    const { activeCategory, pagesCount, activePage } = current_state;
+    const { activeCategory, pagesCount, activePage } = currentState;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const updatedPagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
     const updatedActivePage = pagesCount === updatedPagesCount ? activePage : 0;
 
     return {
-      current_state,
+      currentState,
       pagesCount: updatedPagesCount,
       activePage: updatedActivePage,
       categoryProducts,
