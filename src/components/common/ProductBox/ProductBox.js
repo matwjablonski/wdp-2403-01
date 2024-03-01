@@ -71,7 +71,9 @@ const ProductBox = ({
         </div>
         <div className={styles.price}>
           <Price price={originalPrice} variant='original' />
-          <Price price={price} variant='actual' />
+          <Button className={styles.priceBtn}>
+            <Price price={price} variant='actual' />
+          </Button>
         </div>
       </div>
     </div>
