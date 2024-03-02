@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import PanelBar from '../../layout/PanelBar/PanelBar';
+import PanelMenu from '../../layout/PanelMenu/PanelMenu';
 
 class NewFurniture extends React.Component {
   constructor(props) {
@@ -104,34 +106,20 @@ class NewFurniture extends React.Component {
       <Swipeable action={this.handlePageSwipe}>
         <div className={styles.root}>
           <div className='container'>
-            <div className={styles.panelBar}>
-              <div className='row no-gutters align-items-end'>
-                <div className={'col-auto ' + styles.heading}>
-                  <h3>New furniture</h3>
-                </div>
-                <div className={'col ' + styles.menu}>
-                  <ul>
-                    {categories.map(item => (
-                      <li key={item.id}>
-                        <a
-                          className={item.id === activeCategory && styles.active}
-                          onClick={() => this.handleCategoryChange(item.id)}
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div
-                  className={'col-auto ' + styles.dots}
-                  onDoubleClick={this.toggleShowAllProducts}
-                >
-                  {!showAllProducts && <ul>{dots}</ul>}
-                  <ul>{showAllProducts && dots}</ul>
-                </div>
+            <PanelBar title='New furniture'>
+              <PanelMenu
+                menuItems={categories}
+                action={this.handleCategoryChange}
+                activeItem={activeCategory}
+              />
+              <div
+                className={'col-auto ' + styles.dots}
+                onDoubleClick={this.toggleShowAllProducts}
+              >
+                {!showAllProducts && <ul>{dots}</ul>}
+                <ul>{showAllProducts && dots}</ul>
               </div>
-            </div>
+            </PanelBar>
             <div className='row'>
               {displayedProducts.map(item => (
                 <div key={item.id} className='col-6 col-md-4 col-sm-6 col-lg-3'>
