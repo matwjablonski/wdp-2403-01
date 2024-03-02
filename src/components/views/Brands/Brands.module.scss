@@ -1,0 +1,40 @@
+@import "../../../styles/settings.scss";
+
+.slider {
+  width: 71.3rem;
+  height: 8rem;
+  margin: 0.6rem auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  border-top: 0.06rem solid $grayTwo;
+  border-bottom: 0.06rem solid $grayTwo;
+
+  .item {
+    width: 80%;
+    height: 80%;
+    transition: transform 0.5s ease;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    border: 0.06rem solid $grayTwo;
+    text-align: center;
+    justify-content: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  button {
+    width: 7rem;
+    height: 7.2rem;
+    background-color: $darkGray;
+
+    .fa {
+      align-items: center;
+      color: $white;
+    }
+  }
+}
