@@ -49,6 +49,7 @@
             text-decoration: none;
             font-size: 18px;
             display: block;
+            cursor: pointer;
 
             &.active,
             &:hover {
@@ -89,6 +90,7 @@
             border-radius: 6px;
             background-color: $panelbar-link-bg;
             font-size: 0;
+            cursor: pointer;
 
             &.active,
             &:hover {
