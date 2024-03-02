@@ -3,3 +3,14 @@
 .root {
   padding: 5rem 0;
 }
+
+@media (max-width:1281px) {
+  .container > .row {
+    width: 50%;
+  }
+}
+
+
+@media (max-width: 961px) {
+
+}
