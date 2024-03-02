@@ -7,8 +7,6 @@ import MobileCompanyClaim, {
   logo,
   phoneNumber,
 } from '../CompanyClaimMedia/CompanyClaimMedia';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 const CompanyClaim = () => {
   return (
