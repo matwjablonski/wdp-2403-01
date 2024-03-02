@@ -102,7 +102,9 @@
     }
 
     .menuToggle {
-      background-color: $header-menubar-bg;
+      background-color: $mobile-menuBar-menu-bg;
+      color: $button-text;
+      padding-right: 0;
     }
 
     .menu {
