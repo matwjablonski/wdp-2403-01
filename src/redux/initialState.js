@@ -299,6 +299,15 @@ const initialState = {
   cart: {
     products: [],
   },
+  clientsOpinions: [
+    {
+      id: '1',
+      fullName: 'John Smith',
+      photo: 'images/clients/john-smith.jpg',
+      text:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit at mollitia voluptatibus harum placeat adipisci consequuntur, laboriosam maiores. Facilis, ad!',
+    },
+  ],
 };
 
 export default initialState;
