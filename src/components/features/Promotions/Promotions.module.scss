@@ -1,0 +1,134 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  padding: 1rem 0;
+
+  .panel {
+    @media only screen and (max-width: 575.5px) {
+      row-gap: 10px;
+    }
+  }
+
+  .leftPanel {
+    color: $promotions-secondary-color;
+    height: 300px;
+
+    .bkg {
+      background-color: $promotions-first-bkg-color;
+      height: 100%;
+    }
+
+    .content {
+      padding-left: 15px;
+      padding-bottom: 15px;
+
+      p {
+        margin-right: auto;
+        margin-bottom: 0;
+        line-height: 1.8rem;
+        font-weight: bold;
+      }
+
+      p:nth-of-type(2){
+        font-weight: bold;
+        font-size: 2rem;
+      }
+
+      p:last-child{
+        margin-top: 5px;
+        padding: 5px;
+        border: 3px solid $promotions-secondary-color;
+      }
+    }
+  }
+
+  .rightPanel {
+    row-gap: 30px;
+
+    @media only screen and (max-width: 575.5px) {
+      row-gap: 10px;
+    }
+
+    .rightUpper {
+      background-color: $promotions-second-bkg-color;
+      flex: 1;
+
+      .content {
+        width: 70%;
+        justify-content: center;
+
+        @media only screen and (max-width: 575.5px) {
+          height: 150px;
+        }
+
+        p {
+          margin-right: auto;
+          letter-spacing: .01rem;
+        }
+
+        p:nth-of-type(2){
+          font-weight: 700;
+          font-size: 0.75rem;
+          letter-spacing: .15rem;
+        }
+
+        p:last-child{
+          font-weight: 600;
+          margin-top: 5px;
+          color: $promotions-primary-color;
+        }
+      }
+    }
+
+    .rightBottom {
+      background-color: $promotions-three-bkg-color;
+      flex: 1;
+
+      .content {
+        width: 70%;
+        justify-content: center;
+        text-align: end;
+        padding-right: 10px;
+
+        @media only screen and (max-width: 575.5px) {
+          height: 150px;
+        }
+
+        p {
+          margin-left: auto;
+        }
+
+        p:first-of-type{
+          color: $promotions-primary-color;
+        }
+
+        p:last-child{
+          font-weight: 600;
+          margin-top: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: start;
+
+    p {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.2rem;
+      letter-spacing: .1rem;
+      margin-bottom: 0;
+      text-transform: uppercase;
+      padding: 0;
+
+      span {
+        font-weight: 800;
+      }
+    }
+  }
+}

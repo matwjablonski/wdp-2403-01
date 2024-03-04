@@ -35,6 +35,8 @@
     }
 
     .buttons {
+      opacity: 0;
+      transition: $background-color-time-animation;
       display: flex;
       justify-content: space-between;
     }
@@ -84,5 +86,21 @@
     .price {
       display: flex;
     }
+  }
+
+  &:hover .buttons{
+    opacity: 1;
+    transition: $background-color-time-animation;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .priceBtn{
+    background-color: $price-color-background;
+    text-decoration: none;
+  }
+
+  &:hover .priceBtn{
+    background-color: $productbox-primary;;
   }
 }

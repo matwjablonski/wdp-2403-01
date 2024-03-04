@@ -92,3 +92,15 @@
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .root {
+    height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  .root {
+    height: 134px;
+  }
+}
