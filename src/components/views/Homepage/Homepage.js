@@ -9,8 +9,8 @@ import Promote from '../../layout/Promote/Promote';
 
 const Homepage = () => (
   <div className={styles.root}>
-    <FeatureBoxes />
     <Promote />
+    <FeatureBoxes />
     <NewFurniture />
   </div>
 );
