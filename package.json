@@ -14,9 +14,9 @@
     "refactor:format": "prettier --write \"src/**/*.{js,html,scss}\"",
     "refactor:lint": "eslint src/",
     "build": "react-scripts build",
-    "test": "react-scripts test --noStackTrace",
-    "test-all": "react-scripts test --watchAll=false --noStackTrace",
-    "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
+    "test": "react-scripts test ",
+    "test-all": "react-scripts test --watchAll=false ",
+    "test-related": "react-scripts test --watchAll=false  --findRelatedTests",
     "eject": "react-scripts eject"
   },
   "husky": {
