@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import styles from './NewFurniture.module.scss';
 import { clsx } from 'clsx';
 import ProductBox from '../../common/ProductBox/ProductBox';
@@ -15,6 +14,8 @@ class NewFurniture extends React.Component {
     this.state = {
       activePage: 0,
       activeCategory: 'bed',
+      isFading: false,
+      fadeTime: parseInt(styles.timeAnimation),
     };
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -52,16 +53,33 @@ class NewFurniture extends React.Component {
   }
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activePage: newPage,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
-
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
 
   render() {
     const { categories, itemsOnPage } = this.props;
-    const { activeCategory, categoryProducts, activePage, pagesCount } = this.state;
+    const {
+      activeCategory,
+      categoryProducts,
+      isFading,
+      activePage,
+      pagesCount,
+    } = this.state;
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -103,7 +121,11 @@ class NewFurniture extends React.Component {
                 <ul>{dots}</ul>
               </div>
             </div>
-            <div className='row justify-content-center'>
+            <div
+              className={`row justify-content-center ${
+                isFading ? styles.fadeOut : styles.fadeIn
+              }`}
+            >
               {categoryProducts
                 .slice(activePage * itemsOnPage, (activePage + 1) * itemsOnPage)
                 .map(item => (
