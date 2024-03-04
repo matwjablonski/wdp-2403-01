@@ -16,6 +16,14 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ProductImage from '../../common/ProductImage/ProductImage';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faStar,
+  faExchangeAlt,
+  faShoppingBasket,
+} from '@fortawesome/free-solid-svg-icons';
+import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
+
 const Gallery = () => {
   const categories = useSelector(getAllTrends);
   const [activeCategory, setActiveCategory] = useState(categories[1].id);
@@ -63,12 +71,36 @@ const Gallery = () => {
             />
             <div className={styles.gallery}>
               <SalesPanel className={styles.bkg} sales={activeSale}>
-                <div className={styles.content}>
-                  <p>from $50.80</p>
-                  <p>Bedroom Bed</p>
-                  <Button className={styles.button} variant='outline'>
-                    Shop now
+                {/* <div className={styles.content}> */}
+                <div className={styles.buttons}>
+                  <Button variant='small'>
+                    <FontAwesomeIcon icon={faHeart} />
                   </Button>
+                  <Button variant='small'>
+                    <FontAwesomeIcon icon={faExchangeAlt} />
+                  </Button>
+                  <Button variant='small'>
+                    <FontAwesomeIcon icon={faHeart} />
+                  </Button>
+                  <Button variant='small'>
+                    <FontAwesomeIcon icon={faShoppingBasket} />
+                  </Button>
+                </div>
+                <div className={styles.detailsWrapper}>
+                  <div className={clsx('', styles.details)}>
+                    <h5>{activeItem.name}</h5>
+                    <div className={styles.stars}>
+                      {[1, 2, 3, 4, 5].map(i => (
+                        <a key={i} href='#'>
+                          {i <= activeItem.stars ? (
+                            <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+                          ) : (
+                            <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
+                          )}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </SalesPanel>
             </div>

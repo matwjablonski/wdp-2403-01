@@ -15,14 +15,82 @@
     flex: 1 2 2;
     text-transform: uppercase;
 
-    .bkg {
-      background-color: gray;
-    }
-
     .gallery {
       height: 100%;
     }
 
+    // .content {
+    //   flex-direction: row;
+    //   justify-content: space-between;
+
+    .bkg {
+      display: flex;
+      background-color: gray;
+      justify-content: space-between;
+   //   align-items: center;
+
+      .buttons {
+        transition: $background-color-time-animation;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 2px;
+      }
+
+      .detailsWrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+      .details {
+        position: relative;
+        text-align: center;
+        padding: 20px;
+        margin: 20px 20px;
+        background-color: white;
+
+        &:after {
+          content: '';
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-color: transparent black transparent transparent;
+          position: absolute;
+          border-width: 0 0 30px 30px;
+          border-color: transparent transparent transparent black;
+          left: 0;
+          top: 0;
+        }
+
+        &:before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-color: transparent black transparent transparent;
+          position: absolute;
+          border-width: 30px 30px 0 0;
+          border-color: transparent black transparent transparent;
+          right: 0;
+          bottom: 0;
+        }
+
+        h5 {
+          color: black;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 1px;
+        }
+
+        .stars {
+          a {
+            text-decoration: none;
+            color: $productbox-stars-clr;
+          }
+        }
+      }
+    }
+  }
     .sliderItems {
     //  display: flex;
       width: 100%;
