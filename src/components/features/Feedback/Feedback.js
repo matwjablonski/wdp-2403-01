@@ -12,14 +12,18 @@ import clsx from 'clsx';
 const Feedback = () => {
   const clientsOpinions = useSelector(state => state.clientsOpinions);
   const [activeOpinion, setActiveOpinion] = useState(clientsOpinions[0]);
+  const [activeDot, setActiveDot] = useState('1');
 
-  const handleOpinionChange = newOpinion => {
-    if (newOpinion === 'dotOne') {
+  const handleOpinionChange = dotId => {
+    if (dotId === '1') {
       setActiveOpinion(clientsOpinions[0]);
-    } else if (newOpinion === 'dotTwo') {
+      setActiveDot(dotId);
+    } else if (dotId === '2') {
       setActiveOpinion(clientsOpinions[1]);
-    } else if (newOpinion === 'dotThree') {
+      setActiveDot(dotId);
+    } else if (dotId === '3') {
       setActiveOpinion(clientsOpinions[2]);
+      setActiveDot(dotId);
     }
   };
 
@@ -30,11 +34,15 @@ const Feedback = () => {
       activeIndex++;
       if (activeIndex < 3) {
         setActiveOpinion(clientsOpinions[activeIndex]);
+        activeIndex++;
+        setActiveDot(activeIndex.toString());
       }
     } else if (opinionChange === 'decrement') {
       activeIndex--;
       if (activeIndex >= 0) {
         setActiveOpinion(clientsOpinions[activeIndex]);
+        activeIndex++;
+        setActiveDot(activeIndex.toString());
       }
     }
   };
@@ -50,33 +58,17 @@ const Feedback = () => {
               </div>
               <div className={'col-auto ' + styles.dots}>
                 <ul>
-                  <li>
-                    <a
-                      id='dotOne'
-                      className={styles.active}
-                      onClick={e => handleOpinionChange(e.target.getAttribute('id'))}
-                    >
-                      .
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      id='dotTwo'
-                      className=''
-                      onClick={e => handleOpinionChange(e.target.getAttribute('id'))}
-                    >
-                      .
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      id='dotThree'
-                      className=''
-                      onClick={e => handleOpinionChange(e.target.getAttribute('id'))}
-                    >
-                      .
-                    </a>
-                  </li>
+                  {clientsOpinions.map(opinion => (
+                    <li key={opinion.id}>
+                      <a
+                        className={opinion.id === activeDot && styles.active}
+                        id={opinion.id}
+                        onClick={e => handleOpinionChange(e.target.getAttribute('id'))}
+                      >
+                        {opinion.fullName}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
