@@ -303,6 +303,7 @@ const initialState = {
     {
       id: '1',
       fullName: 'John Smith',
+      role: 'Favourite client',
       photo: 'images/clients/john-smith.jpg',
       text:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit at mollitia voluptatibus harum placeat adipisci consequuntur, laboriosam maiores. Facilis, ad!',
