@@ -1,36 +1,47 @@
 @import "../../../styles/settings.scss";
+@import "../../../styles/keyframes.scss";
 
 .root {
-    .dots {
-      position: absolute;
-      right: 0;
-      top: 0;
+  .dots {
+    position: absolute;
+    right: 0;
+    top: 0;
 
-      ul {
-        margin: 0;
-        padding: 0 0 0 1rem;
-        list-style: none;
-        background-color: $panelbar-bg;
-        transform: translateY(15px);
+    ul {
+      margin: 0;
+      padding: 0 0 0 1rem;
+      list-style: none;
+      background-color: $panelbar-bg;
+      transform: translateY(15px);
 
-        li {
-          display: inline-block;
-          margin-left: 0.5rem;
+      li {
+        display: inline-block;
+        margin-left: 0.5rem;
 
-          a {
-            display: block;
-            width: 13px;
-            height: 13px;
-            border-radius: 6px;
-            background-color: $panelbar-link-bg;
-            font-size: 0;
+        a {
+          display: block;
+          width: 13px;
+          height: 13px;
+          border-radius: 6px;
+          background-color: $panelbar-link-bg;
+          font-size: 0;
+          cursor: pointer;
 
-            &.active,
-            &:hover {
-              background-color: $panelbar-primary;
+          &.active,
+          &:hover {
+            background-color: $panelbar-primary;
           }
         }
       }
     }
   }
 }
+.fadeOut {
+  opacity: 0;
+  animation: fadeOut 0.2s ease-in-out;
+}
+.fadeIn {
+  opacity: 1;
+  animation: fadeIn 0.2s ease-in-out;
+}
+$timeAnimation: $time-animation;
