@@ -1,16 +1,14 @@
-import styles from './ProductImage.module.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import ImageWrapper from '../ImageWrapper/ImageWrapper';
+
 const ProductImage = ({ name, id, category }) => {
-  return (
-    <div className={styles.productImage}>
-      <img
-        alt={name}
-        src={`${process.env.PUBLIC_URL}/images/products/${category}/${id}.jpg`}
-      />
-    </div>
-  );
+  const imageProps = {
+    alt: name,
+    filePath: `${process.env.PUBLIC_URL}/images/products/${category}/${id}.jpg`,
+  };
+  return <ImageWrapper {...imageProps} />;
 };
 
 ProductImage.propTypes = {

@@ -12,6 +12,8 @@ class NewFurniture extends React.Component {
     this.state = {
       activePage: 0,
       activeCategory: 'bed',
+      isFading: false,
+      fadeTime: parseInt(styles.timeAnimation),
       showAllProducts: false,
       isMobile: window.innerWidth <= 768,
       isTablet: window.innerWidth > 768 && window.innerWidth <= 992,
@@ -43,11 +45,22 @@ class NewFurniture extends React.Component {
   }
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activePage: newPage,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
-
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
 
   toggleShowAllProducts() {
@@ -71,7 +84,7 @@ class NewFurniture extends React.Component {
 
   render() {
     const { categories, products } = this.props;
-    const { activeCategory, activePage, showAllProducts } = this.state;
+    const { activeCategory, activePage, isFading, showAllProducts } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
@@ -132,7 +145,7 @@ class NewFurniture extends React.Component {
                 </div>
               </div>
             </div>
-            <div className='row'>
+            <div className={`row ${isFading ? styles.fadeOut : styles.fadeIn}`}>
               {displayedProducts.map(item => (
                 <div key={item.id} className='col-6 col-md-4 col-sm-6 col-lg-3'>
                   <ProductBox {...item} />
