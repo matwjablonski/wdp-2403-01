@@ -6,6 +6,29 @@ const initialState = {
     { id: 'table', name: 'Table' },
     { id: 'dining', name: 'Dining' },
   ],
+  promotions: [
+    {
+      type: 'left-panel',
+      title: 'guest room',
+      subtitle: 'sofa',
+      discount: '-20%',
+      filePath: '/images/promotions/left-panel.jpg',
+    },
+    {
+      type: 'right-upper-panel',
+      title: 'office#chair',
+      subtitle: 'collection',
+      discount: '$200.00',
+      filePath: '', //'/images/promotions/right-upper-panel.jpg',
+    },
+    {
+      type: 'right-bottom-panel',
+      title: 'special#collection',
+      subtitle: '',
+      discount: 'Save up 45% of furniture',
+      filePath: '', //'/images/promotions/right-bottom-panel.jpg',
+    },
+  ],
   products: [
     {
       id: 'aenean-ru-bristique-1',
