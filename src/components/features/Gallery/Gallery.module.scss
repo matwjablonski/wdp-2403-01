@@ -13,6 +13,7 @@
     color: black;
     height: 600px;
     flex: 1 2 2;
+    text-transform: uppercase;
 
     .bkg {
       background-color: gray;
@@ -21,6 +22,60 @@
     .gallery {
       height: 100%;
     }
+
+    .sliderItems {
+    //  display: flex;
+      width: 100%;
+      margin-top: 10px;
+      padding: 0 50px;
+
+      :global(.slick-prev) {
+        left: -40px;
+      };
+
+      :global(.slick-next) {
+        right: -40px;
+      };
+
+      :global(.slick-slide) {
+        padding: 0 1px;
+      };
+
+      button {
+        width: 2rem;
+        height: 5.4rem;
+        background-color: $darkGray;
+        margin-right: 2rem;
+
+        // .fa {
+        //   align-items: center;
+        //   color: $white;
+        //   font-size: 12px;
+        // }
+      }
+
+      button:nth-of-type(2) {
+        margin: 0;
+        margin-left: 2rem;
+      }
+
+
+      // .imgBody {
+      //   width: 100%;
+      //   outline-color: red;
+      //   display: inline-block;
+      // }
+
+      // img {
+      //   width: 100px;
+      //   object-fit: cover;
+      //   width: 100%;
+      //   height: 100%;
+      // }
+
+
+    }
+
   }
 
   .rightPanel {
@@ -106,7 +161,7 @@
 
     a {
       &.active {
-        background-color: gray;
+        background-color: rgb(238, 237, 237);
       }
 
       &.active,
@@ -116,7 +171,7 @@
           position: absolute;
           top: -2px;
           left: -1px;
-          width: 102%;
+          width: 101%;
           border-top: 4px solid $panelbar-primary;
         }
       }

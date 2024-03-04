@@ -10,13 +10,7 @@ const PanelMenu = ({
   classActive: classActiveProp,
   noHover,
 }) => {
-  const classes = [classActiveProp ? classActiveProp : styles.active];
   const classActive = classActiveProp ? classActiveProp : styles.active;
-  //  classes.push(classActive);
-
-  if (noHover) {
-    classes.push(styles.noHover);
-  }
 
   return (
     <div className={'col ' + styles.menu}>

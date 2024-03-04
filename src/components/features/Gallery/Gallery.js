@@ -1,91 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Gallery.module.scss';
 import { clsx } from 'clsx';
 import SalesPanel from '../../common/SalesPanel/SalesPanel';
 import Button from '../../common/Button/Button';
 import PanelBar from '../../layout/PanelBar/PanelBar';
 import PanelMenu from '../../layout/PanelMenu/PanelMenu';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+
+import { useSelector } from 'react-redux';
+import { getByTrend } from '../../../redux/productsRedux';
+import { getAllTrends } from '../../../redux/categoriesRedux';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import ProductImage from '../../common/ProductImage/ProductImage';
 
 const Gallery = () => {
-  const categories = [
-    { id: '1', name: 'featured' },
-    { id: '2', name: 'top seller' },
-    { id: '3', name: 'sales off' },
-    { id: '4', name: 'top rated' },
-  ];
-  const [activeCategory, setActiveCategory] = useState(categories[0].id);
+  const categories = useSelector(getAllTrends);
+  const [activeCategory, setActiveCategory] = useState(categories[1].id);
+  const items = useSelector(state => getByTrend(state, activeCategory));
+  const [activeItem, setActiveItem] = useState(items[3]);
+  const activeSale = { filePath: getFilePath(activeItem) };
+  console.log(activeItem, activeCategory);
+  console.log(items);
+
+  useEffect(() => {
+    setActiveItem(items[0]);
+    activeSale.filePath = getFilePath(activeItem);
+    console.log(activeSale.filePath);
+  }, [activeCategory, activeItem, activeSale.filePath, items]);
 
   const handleCategoryChange = newCategory => {
     setActiveCategory(newCategory);
   };
 
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-      slidesToSlide: 1,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-      slidesToSlide: 1,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 3,
-      slidesToSlide: 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2,
-      slidesToSlide: 1,
-    },
-  };
+  function getFilePath(item) {
+    if (item)
+      return `${process.env.PUBLIC_URL}/images/products/${item.category}/${item.id}.jpg`;
+    return '';
+  }
+
   //https://refine.dev/blog/react-slick/#styling-the-thumbnails
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 6,
     slidesToScroll: 1,
-    nextArrow: (
-      <div>
-        <div className='next-slick-arrow'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            stroke='black'
-            height='24'
-            viewBox='0 -960 960 960'
-            width='24'
-          >
-            <path d='m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z' />
-          </svg>
-        </div>
-      </div>
-    ),
-
-    prevArrow: (
-      <div>
-        <div className='next-slick-arrow rotate-180'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            stroke='black'
-            height='24'
-            viewBox='0 -960 960 960'
-            width='24'
-          >
-            <path d='m242-200 200-280-200-280h98l200 280-200 280h-98Zm238 0 200-280-200-280h98l200 280-200 280h-98Z' />
-          </svg>
-        </div>
-      </div>
-    ),
   };
   return (
     <div className={styles.root}>
@@ -101,7 +62,7 @@ const Gallery = () => {
               noHover={true}
             />
             <div className={styles.gallery}>
-              <SalesPanel className={styles.bkg}>
+              <SalesPanel className={styles.bkg} sales={activeSale}>
                 <div className={styles.content}>
                   <p>from $50.80</p>
                   <p>Bedroom Bed</p>
@@ -111,46 +72,24 @@ const Gallery = () => {
                 </div>
               </SalesPanel>
             </div>
-            {/* <Carousel responsive={responsive}>
-              <div>
-                <h3>Image 1</h3>
-              </div>
-              <div>
-                <h3>Image 2</h3>
-              </div>
-              <div>
-                <h3>Image 3</h3>
-              </div>
-              <div>
-                <h3>Image 4</h3>
-              </div>
-              <div>
-                <h3>Image 5</h3>
-              </div>
-              <div>
-                <h3>Image 6</h3>
-              </div>
-            </Carousel> */}
-            <div className='px-5'>
+            <div className={clsx('', styles.sliderItems)}>
               <Slider {...settings}>
-                <div>
-                  <h3>Image 1</h3>
-                </div>
-                <div>
-                  <h3>Image 2</h3>
-                </div>
-                <div>
-                  <h3>Image 3</h3>
-                </div>
-                <div>
-                  <h3>Image 4</h3>
-                </div>
-                <div>
-                  <h3>Image 5</h3>
-                </div>
-                <div>
-                  <h3>Image 6</h3>
-                </div>
+                {items.map(item => (
+                  <div key={item.id} onClick={() => setActiveItem(item)} className=''>
+                    <ProductImage {...item} className={styles.imgBody} />
+                    {/* <img alt={'name'} className={styles.imgBody} src={getFilePath(item)} /> */}
+                  </div>
+                ))}
+              </Slider>
+            </div>
+            <div className={clsx('', styles.sliderItems)}>
+              <Slider {...settings}>
+                {items.map(item => (
+                  <div key={item.id} onClick={() => setActiveItem(item)} className=''>
+                    <ProductImage {...item} />
+                    {/* <img alt={'name'} className={styles.imgBody} src={getFilePath(item)} /> */}
+                  </div>
+                ))}
               </Slider>
             </div>
           </div>
