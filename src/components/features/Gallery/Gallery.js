@@ -82,16 +82,6 @@ const Gallery = () => {
                 ))}
               </Slider>
             </div>
-            <div className={clsx('', styles.sliderItems)}>
-              <Slider {...settings}>
-                {items.map(item => (
-                  <div key={item.id} onClick={() => setActiveItem(item)} className=''>
-                    <ProductImage {...item} />
-                    {/* <img alt={'name'} className={styles.imgBody} src={getFilePath(item)} /> */}
-                  </div>
-                ))}
-              </Slider>
-            </div>
           </div>
           <div className={clsx('col-lg-6', styles.rightPanel)}>
             <SalesPanel className={styles.bkg}>
