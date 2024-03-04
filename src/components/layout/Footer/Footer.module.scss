@@ -80,7 +80,7 @@
     }
 
     .footerSpare {
-      color: rgb(169, 169, 169);
+      color: $footer-text-secondary;
       font-size: 14px;
       line-height: 26px;
     }
@@ -90,11 +90,11 @@
 @media (max-width: 768px) {
   .root {
     .footerSpare {
-      color: rgb(169, 169, 169);
+      color: $footer-text-secondary;
     }
+
     .bottomBar {
       padding-bottom: 10px;
     }
   }
 }
-
