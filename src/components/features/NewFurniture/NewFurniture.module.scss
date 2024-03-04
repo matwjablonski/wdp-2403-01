@@ -25,13 +25,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    border-bottom: 4px solid $panelbar-border;
 
     @media (max-width: 768px) {
       justify-content: center;
-     }
-
-    :global(.row) > * {
-      border-bottom: 4px solid $panelbar-border;
+      border-top: 4px solid $panelbar-border;
+      border-bottom: none;
     }
 
     .heading {
@@ -97,6 +96,7 @@
 
       ul {
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
         row-gap: 5px;
         align-items: center;
