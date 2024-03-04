@@ -11,7 +11,7 @@
   }
   .leftPanel {
     color: black;
-    height: 600px;
+    height: 500px;
     flex: 1 2 2;
     text-transform: uppercase;
 
@@ -54,13 +54,6 @@
         margin-left: 2rem;
       }
 
-
-      // .imgBody {
-      //   width: 100%;
-      //   outline-color: red;
-      //   display: inline-block;
-      // }
-
       img {
         width: 100px;
         object-fit: cover;
@@ -68,10 +61,7 @@
         height: 100%;
         top: 3px;
       }
-
-
     }
-
   }
 
   .rightPanel {
@@ -85,8 +75,8 @@
     }
 
     .content {
-      padding-left: 40px;
-      padding-top: 40px;
+      padding-left: 60px;
+      padding-top: 60px;
 
       p {
         margin-right: auto;

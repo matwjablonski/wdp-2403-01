@@ -34,6 +34,13 @@ const initialState = {
       discount: 'Save up 45% of furniture',
       filePath: '', //'/images/promotions/right-bottom-panel.jpg',
     },
+    {
+      type: 'gallery-panel',
+      title: 'From#$50.80',
+      subtitle: 'Bedroom Bed',
+      discount: '',
+      filePath: '/images/promotions/gallery-panel.jpg',
+    },
   ],
   products: [
     {

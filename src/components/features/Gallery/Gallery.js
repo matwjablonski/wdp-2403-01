@@ -9,6 +9,7 @@ import PanelMenu from '../../layout/PanelMenu/PanelMenu';
 import { useSelector } from 'react-redux';
 import { getByTrend } from '../../../redux/productsRedux';
 import { getAllTrends } from '../../../redux/categoriesRedux';
+import { getPromByType } from '../../../redux/promotionsRedux';
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -21,14 +22,13 @@ const Gallery = () => {
   const items = useSelector(state => getByTrend(state, activeCategory));
   const [activeItem, setActiveItem] = useState(items[3]);
   const activeSale = { filePath: getFilePath(activeItem) };
-  console.log(activeItem, activeCategory);
-  console.log(items);
+  const promItems = useSelector(state => getPromByType(state, 'gallery-panel'));
 
   useEffect(() => {
     setActiveItem(items[0]);
     activeSale.filePath = getFilePath(activeItem);
-    console.log(activeSale.filePath);
-  }, [activeCategory, activeItem, activeSale.filePath, items]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory]);
 
   const handleCategoryChange = newCategory => {
     setActiveCategory(newCategory);
@@ -77,17 +77,19 @@ const Gallery = () => {
                 {items.map(item => (
                   <div key={item.id} onClick={() => setActiveItem(item)} className=''>
                     <ProductImage {...item} className={styles.imgBody} />
-                    {/* <img alt={'name'} className={styles.imgBody} src={getFilePath(item)} /> */}
                   </div>
                 ))}
               </Slider>
             </div>
           </div>
           <div className={clsx('col-lg-6', styles.rightPanel)}>
-            <SalesPanel className={styles.bkg}>
+            <SalesPanel className={styles.bkg} sales={promItems[0]}>
               <div className={styles.content}>
-                <p>from $50.80</p>
-                <p>Bedroom Bed</p>
+                <p>
+                  {promItems[0].title.split('#')[0]}
+                  <span>{promItems[0].title.split('#')[1]}</span>
+                </p>
+                <p>{promItems[0].subtitle}</p>
                 <Button className={styles.button} variant='outline'>
                   Shop now
                 </Button>
