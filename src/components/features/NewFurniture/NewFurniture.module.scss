@@ -1,4 +1,5 @@
 @import "../../../styles/settings.scss";
+@import "../../../styles/keyframes.scss";
 
 .root {
   .panelBar {
@@ -48,6 +49,7 @@
             text-decoration: none;
             font-size: 18px;
             display: block;
+            cursor: pointer;
 
             &.active,
             &:hover {
@@ -88,13 +90,24 @@
             border-radius: 6px;
             background-color: $panelbar-link-bg;
             font-size: 0;
+            cursor: pointer;
 
             &.active,
             &:hover {
               background-color: $panelbar-primary;
+            }
           }
         }
       }
     }
   }
-}}
+}
+.fadeOut {
+  opacity: 0;
+  animation: fadeOut 0.2s ease-in-out;
+}
+.fadeIn {
+  opacity: 1;
+  animation: fadeIn 0.2s ease-in-out;
+}
+$timeAnimation: $time-animation;
