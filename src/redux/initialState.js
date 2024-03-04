@@ -299,6 +299,32 @@ const initialState = {
   cart: {
     products: [],
   },
+  clientsOpinions: [
+    {
+      id: '1',
+      fullName: 'John Smith',
+      role: 'Favourite client',
+      photoURL: 'images/clients/john-smith.jpg',
+      text:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit at mollitia voluptatibus harum placeat adipisci consequuntur, laboriosam maiores. Facilis, ad!',
+    },
+    {
+      id: '2',
+      fullName: 'Amanda Doe',
+      role: 'Recent parnter',
+      photoURL: 'images/clients/amanda-doe.jpg',
+      text:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat, ipsa hic? Quisquam assumenda culpa, beatae eligendi id quibusdam! Temporibus commodi omnis animi.',
+    },
+    {
+      id: '3',
+      fullName: 'Rod Stewart',
+      role: 'The best client',
+      photoURL: 'images/clients/rod-stewart.jpg',
+      text:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore nobis sit sunt adipisci molestias officiis officia quae, laudantium vitae explicabo ullam quas aspernatur quam quis fuga suscipit pariatur natus? Culpa.',
+    },
+  ],
 };
 
 export default initialState;
