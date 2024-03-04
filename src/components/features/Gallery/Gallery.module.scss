@@ -25,12 +25,12 @@
 
   .rightPanel {
     color: black;
-    height: 400px;
+    min-height: 400px;
     flex: 1 1 1;
 
     .bkg {
       background-color: green;
-      height: 100%;
+      min-height: 400px;
     }
 
     .content {
@@ -98,13 +98,19 @@
     flex: 1;
     margin: 0 0!important;
     border-top: 1px solid gray;
-    border-left: 1px solid gray;
     border-right: 1px solid gray;
 
+    &:first-of-type {
+      border-left: 1px solid gray;
+    }
+
     a {
+      &.active {
+        background-color: gray;
+      }
+
       &.active,
       &:hover {
-        background-color: gray;
         &::before {
           content: "";
           position: absolute;
