@@ -13,11 +13,11 @@
       line-height: 55px;
 
       a {
-        color: #ffffff;
+        color: $header-topbar-text;
         font-size: 13px;
 
         &:hover {
-          color: $primary;
+          color: $header-topbar-primary;
           text-decoration: none;
         }
       }
@@ -37,6 +37,27 @@
 
     .icon {
       margin-right: 5px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .root {
+    .login {
+      span {
+        display: none;
+      }
+    }
+    .register {
+      span {
+        display: none;
+      }
+    }
+    .topOptions {
+      flex: 0 0 60%;
+      ul li {
+        margin-right: 0.8rem;
+      }
     }
   }
 }
