@@ -35,6 +35,10 @@
         flex-direction: column;
         justify-content: center;
         row-gap: 2px;
+
+        .btn:hover {
+          transform: translateX($hover-translate-y);
+        }
       }
 
       .detailsWrapper{
@@ -242,4 +246,15 @@
       }
     }
   }
-}
+
+  .tooltip {
+    background-color: black;
+    color: white;
+    padding: 4px 10px;
+
+    }
+    &:hover::after {
+      background-color: black;
+    }
+  }
+

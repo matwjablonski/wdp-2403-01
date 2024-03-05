@@ -18,13 +18,14 @@ import ProductImage from '../../common/ProductImage/ProductImage';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faEye,
   faStar,
   faExchangeAlt,
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Price from '../../common/Price/Price';
-// import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip';
 
 const Gallery = () => {
   const categories = useSelector(getAllTrends);
@@ -75,19 +76,46 @@ const Gallery = () => {
               <SalesPanel className={styles.bkg} sales={activeSale}>
                 {/* <div className={styles.content}> */}
                 <div className={styles.buttons}>
-                  <Button variant='small'>
-                    <FontAwesomeIcon icon={faHeart} id='but1' />
-                  </Button>
-                  <Button variant='small'>
-                    <FontAwesomeIcon icon={faExchangeAlt} />
-                  </Button>
-                  <Button variant='small'>
+                  <Button
+                    variant='outline'
+                    className={styles.btn}
+                    data-tip='favorite'
+                    data-for='test'
+                  >
                     <FontAwesomeIcon icon={faHeart} />
                   </Button>
-                  <Button variant='small'>
+                  <Button
+                    variant='outline'
+                    className={styles.btn}
+                    data-tip='compare'
+                    data-for='test'
+                  >
+                    <FontAwesomeIcon icon={faExchangeAlt} />
+                  </Button>
+                  <Button
+                    variant='outline'
+                    className={styles.btn}
+                    data-tip='quick view'
+                    data-for='test'
+                  >
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                  <Button
+                    variant='outline'
+                    className={styles.btn}
+                    data-tip='add to cart'
+                    data-for='test'
+                  >
                     <FontAwesomeIcon icon={faShoppingBasket} />
                   </Button>
-                  {/* <ReactTooltip key='right'anchorSelect='but1' content='Favorite' place='right' /> */}
+                  <ReactTooltip
+                    id='test'
+                    place='right'
+                    type='info'
+                    effect='solid'
+                    arrowColor='black'
+                    className={styles.tooltip}
+                  />
                 </div>
                 <div className={styles.detailsWrapper}>
                   <div className={clsx('', styles.details)}>
