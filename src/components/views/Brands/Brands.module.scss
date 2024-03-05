@@ -1,0 +1,46 @@
+@import "../../../styles/settings.scss";
+
+.slider {
+  width: 71.3rem;
+  height: 8.8rem;
+  margin: 0.6rem auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  border-top: 0.08rem solid $lighterGrayTwo;
+  border-bottom: 0.08rem solid $lighterGrayTwo;
+
+  .item {
+    width: 10rem;
+    height: 5.4rem;
+    transition: transform 0.5s ease;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    border: 0.08rem solid $lighterGrayTwo;
+    text-align: center;
+    justify-content: center;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  button {
+    width: 2rem;
+    height: 5.4rem;
+    background-color: $darkGray;
+    margin-right: 1rem;
+
+    .fa {
+      align-items: center;
+      color: $white;
+      font-size: 12px;
+    }
+  }
+  button:nth-of-type(2) {
+    margin: 0;
+    margin-left: 1rem;
+  }
+}
