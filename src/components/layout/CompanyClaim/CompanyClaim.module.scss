@@ -32,8 +32,10 @@
     .cartBox {
       display: inline-block;
       position: relative;
+      padding-right: 40px;
       color: $header-cart-text;
       @extend %hover-effects;
+
 
       .cartIcon {
         background-color: $header-cart-bg;
@@ -71,113 +73,62 @@
           background-color: lighten($header-claim-primary, 10%);
         }
       }
-    }
-  }
-}
-
-// media-query for mobile
-
-@media (max-width: 576px) {
-  .root {
-    .desktop {
-      display: none;
-    }
-
-    .mobile {
-      display: flex;
-    }
-
-    .logo {
-      flex: 0 0 45%;
-
-      img {
-        width: 65%;
-        height: 65%;
-      }
-    }
-
-    .cart {
-      .cartBox {
-        .cartCounter {
-          margin: -1rem 0 0 2rem;
-        }
-
-        .cartIcon {
-          width: 3rem;
-          height: 3rem;
-          font-size: 20px;
-
-          .icon {
-            font-size: 1.5rem;
-            padding-left: 0.3rem;
-          }
-        }
-      }
-    }
-    .phoneNumber {
-      p {
-        font-size: 14px;
-
-        .icon {
-          font-size: 1.5rem;
-        }
-      }
-    }
-  }
-}
-
-// media-query for mobile
-
-@media (max-width: 576px) {
-  .root {
-    .desktop {
-      display: none;
-    }
-
-    .mobile {
-      display: flex;
-    }
-
-    .logo {
-      flex: 0 0 45%;
-
-      img {
-        width: 65%;
-        height: 65%;
-      }
-    }
-
-    .cart {
-      .cartBox {
-        .cartCounter {
-          margin: -1rem 0 0 2rem;
-        }
-
-        .cartIcon {
-          width: 3rem;
-          height: 3rem;
-          font-size: 20px;
-
-          .icon {
-            font-size: 1.5rem;
-            padding-left: 0.3rem;
-          }
-        }
-      }
-    }
-    .phoneNumber {
-      p {
-        font-size: 14px;
-
-        .icon {
-          font-size: 1.5rem;
-        }
-      }
 
       .itemsAmount {
         position: absolute;
         top: 15%;
         left: 25%;
+      }
+    }
+  }
+}
+
+// media-query for mobile
+
+@media (max-width: 576px) {
+  .root {
+    .desktop {
+      display: none;
+    }
+
+    .mobile {
+      display: flex;
+    }
+
+    .logo {
+      flex: 0 0 45%;
+
+      img {
+        width: 65%;
+        height: 65%;
+      }
+    }
+
+    .cart {
+      .cartBox {
+        .cartCounter {
+          margin: -1rem 0 0 2rem;
+        }
+
+        .cartIcon {
+          width: 3rem;
+          height: 3rem;
+          font-size: 20px;
+
+          .icon {
+            font-size: 1.5rem;
+            padding-left: 0.3rem;
+          }
+        }
+      }
+    }
+    .phoneNumber {
+      p {
+        font-size: 14px;
+
+        .icon {
+          font-size: 1.5rem;
+        }
       }
     }
   }
