@@ -74,7 +74,6 @@ const Gallery = () => {
             />
             <div className={styles.gallery}>
               <SalesPanel className={styles.bkg} sales={activeSale}>
-                {/* <div className={styles.content}> */}
                 <div className={styles.buttons}>
                   <Button
                     variant='outline'
@@ -143,7 +142,10 @@ const Gallery = () => {
               <Slider {...settings}>
                 {items.map(item => (
                   <div key={item.id} onClick={() => setActiveItem(item)} className=''>
-                    <ProductImage {...item} className={styles.imgBody} />
+                    <ProductImage
+                      {...item}
+                      className={clsx(styles.imgBody, styles.notActive)}
+                    />
                   </div>
                 ))}
               </Slider>
