@@ -62,7 +62,7 @@ const Gallery = () => {
   return (
     <div className={styles.root}>
       <div className={'container'}>
-        <div className={clsx('d-flex flex-column flex-lg-row', styles.panel)}>
+        <div className={clsx('row d-flex flex-column flex-lg-row', styles.panel)}>
           <div className={clsx('col-lg-6 d-flex flex-column', styles.leftPanel)}>
             <PanelBar title='Furniture Gallery' />
             <PanelMenu
