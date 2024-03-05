@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Price.module.scss';
 
-const Price = ({ price, variant }) => {
+const Price = ({ price, variant, className: priceBtn }) => {
   const classes = ['main'];
 
   if (variant) classes.push(styles[variant]);
@@ -13,6 +13,7 @@ const Price = ({ price, variant }) => {
 Price.propTypes = {
   price: PropTypes.number,
   variant: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Price;
