@@ -23,6 +23,8 @@ import {
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
+import Price from '../../common/Price/Price';
+// import ReactTooltip from 'react-tooltip'
 
 const Gallery = () => {
   const categories = useSelector(getAllTrends);
@@ -74,7 +76,7 @@ const Gallery = () => {
                 {/* <div className={styles.content}> */}
                 <div className={styles.buttons}>
                   <Button variant='small'>
-                    <FontAwesomeIcon icon={faHeart} />
+                    <FontAwesomeIcon icon={faHeart} id='but1' />
                   </Button>
                   <Button variant='small'>
                     <FontAwesomeIcon icon={faExchangeAlt} />
@@ -85,9 +87,14 @@ const Gallery = () => {
                   <Button variant='small'>
                     <FontAwesomeIcon icon={faShoppingBasket} />
                   </Button>
+                  {/* <ReactTooltip key='right'anchorSelect='but1' content='Favorite' place='right' /> */}
                 </div>
                 <div className={styles.detailsWrapper}>
                   <div className={clsx('', styles.details)}>
+                    <div className={styles.detailsPrice}>
+                      <Price price={activeItem.price} variant='actual' />
+                      <Price price={activeItem.originalPrice} variant='original' />
+                    </div>
                     <h5>{activeItem.name}</h5>
                     <div className={styles.stars}>
                       {[1, 2, 3, 4, 5].map(i => (
