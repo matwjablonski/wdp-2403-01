@@ -51,7 +51,6 @@ const Gallery = () => {
     return '';
   }
 
-  //https://refine.dev/blog/react-slick/#styling-the-thumbnails
   const settings = {
     dots: false,
     infinite: true,
@@ -59,6 +58,7 @@ const Gallery = () => {
     slidesToShow: 6,
     slidesToScroll: 1,
   };
+
   return (
     <div className={styles.root}>
       <div className={'container'}>
