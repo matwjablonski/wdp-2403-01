@@ -1,31 +1,39 @@
 import React from 'react';
 import styles from './Promote.module.scss';
-import ProductImage from '../../common/ProductImage/ProductImage';
-import ProductBox from '../../common/ProductBox/ProductBox';
-import PropTypes from 'prop-types';
+import PromoteProductBox from '../../common/PromoteProductBox/PromoteProductBox';
+import FeaturedProduct from '../../common/FeaturedProduct/FeaturedProduct';
+import { useSelector } from 'react-redux';
+import { getAll } from '../../../redux/productsRedux';
 
-const Promote = ({ name, id, category }) => {
+const Promote = () => {
+  const products = useSelector(getAll);
+  const promotedProduct = products.find(
+    product => product.id === 'aenean-ru-bristique-21'
+  );
+
   return (
     <div className={styles.root}>
       <div className='container'>
         <div className='row'>
           <div className='col-3'>
-            <ProductImage name={name} id={id} category={category} />
-            <ProductBox />
+            {promotedProduct && (
+              <PromoteProductBox
+                id={promotedProduct.id}
+                name={promotedProduct.name}
+                category={promotedProduct.category}
+                stars={promotedProduct.stars}
+                favorite={promotedProduct.favorite}
+                compare={promotedProduct.compare}
+                price={promotedProduct.price}
+                originalPrice={promotedProduct.originalPrice}
+              />
+            )}
           </div>
-          <div className={'col-9 ' + styles.promoSale}>
-            <span>TEST</span>
-          </div>
+          <FeaturedProduct />
         </div>
       </div>
     </div>
   );
-};
-
-Promote.propTypes = {
-  name: PropTypes.string,
-  id: PropTypes.string,
-  category: PropTypes.string,
 };
 
 export default Promote;
