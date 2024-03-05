@@ -728,6 +728,14 @@ const initialState = {
       id: 6,
       url: 'images/brands/brands-6.jpg',
     },
+    {
+      id: 7,
+      url: 'images/brands/brands-7.png',
+    },
+    {
+      id: 8,
+      url: 'images/brands/brands-8.png',
+    },
   ],
 };
 
