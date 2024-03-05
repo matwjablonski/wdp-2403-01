@@ -14,9 +14,9 @@
     "refactor:format": "prettier --write \"src/**/*.{js,html,scss}\"",
     "refactor:lint": "eslint src/",
     "build": "react-scripts build",
-    "test": "react-scripts test ",
-    "test-all": "react-scripts test --watchAll=false ",
-    "test-related": "react-scripts test --watchAll=false  --findRelatedTests",
+    "test": "react-scripts test --noStackTrace",
+    "test-all": "react-scripts test --watchAll=false --noStackTrace",
+    "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
     "eject": "react-scripts eject"
   },
   "husky": {
@@ -58,14 +58,13 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-multi-carousel": "^2.8.4",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.1.2",
     "react-slick": "^0.30.2",
     "react-swipeable": "^7.0.1",
     "react-test-renderer": "^16.9.0",
-    "react-tooltip": "4.2.21",
+    "react-tooltip": "^5.26.3",
     "redux": "^4.0.4",
     "sass": "^1.54.3",
     "slick-carousel": "^1.8.1"
