@@ -713,6 +713,7 @@ const initialState = {
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit at mollitia voluptatibus harum placeat adipisci consequuntur, laboriosam maiores. Facilis, ad!',
     },
   ],
+  activeViewMode: 'desktop',
 };
 
 export default initialState;
