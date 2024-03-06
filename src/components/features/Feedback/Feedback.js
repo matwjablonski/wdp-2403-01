@@ -14,16 +14,16 @@ const Feedback = () => {
   const [activeOpinion, setActiveOpinion] = useState(clientsOpinions[0]);
   const [activeDot, setActiveDot] = useState('1');
 
-  const handleOpinionChange = dotId => {
-    if (dotId === '1') {
+  const handleOpinionChange = newOpinion => {
+    if (newOpinion === '1') {
       setActiveOpinion(clientsOpinions[0]);
-      setActiveDot(dotId);
-    } else if (dotId === '2') {
+      setActiveDot('1');
+    } else if (newOpinion === '2') {
       setActiveOpinion(clientsOpinions[1]);
-      setActiveDot(dotId);
-    } else if (dotId === '3') {
+      setActiveDot('2');
+    } else if (newOpinion === '3') {
       setActiveOpinion(clientsOpinions[2]);
-      setActiveDot(dotId);
+      setActiveDot('3');
     }
   };
 
@@ -34,15 +34,11 @@ const Feedback = () => {
       activeIndex++;
       if (activeIndex < 3) {
         setActiveOpinion(clientsOpinions[activeIndex]);
-        activeIndex++;
-        setActiveDot(activeIndex.toString());
       }
     } else if (opinionChange === 'decrement') {
       activeIndex--;
       if (activeIndex >= 0) {
         setActiveOpinion(clientsOpinions[activeIndex]);
-        activeIndex++;
-        setActiveDot(activeIndex.toString());
       }
     }
   };
@@ -62,8 +58,7 @@ const Feedback = () => {
                     <li key={opinion.id}>
                       <a
                         className={opinion.id === activeDot && styles.active}
-                        id={opinion.id}
-                        onClick={e => handleOpinionChange(e.target.getAttribute('id'))}
+                        onClick={() => handleOpinionChange(opinion.id)}
                       >
                         {opinion.fullName}
                       </a>
