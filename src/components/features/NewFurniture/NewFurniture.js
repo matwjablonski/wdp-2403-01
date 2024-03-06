@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import styles from './NewFurniture.module.scss';
+import { clsx } from 'clsx';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import { getItemsOnPage } from '../../../utils/viewMode';
 
 class NewFurniture extends React.Component {
   constructor(props) {
@@ -12,24 +14,32 @@ class NewFurniture extends React.Component {
     this.state = {
       activePage: 0,
       activeCategory: 'bed',
-      showAllProducts: false,
-      isMobile: window.innerWidth <= 768,
-      isTablet: window.innerWidth > 768 && window.innerWidth <= 992,
+      isFading: false,
+      fadeTime: parseInt(styles.timeAnimation),
     };
-
     this.handlePageSwipe = this.handlePageSwipe.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleCategoryChange = this.handleCategoryChange.bind(this);
-    this.toggleShowAllProducts = this.toggleShowAllProducts.bind(this);
-    this.handleResize = this.handleResize.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, currentState) {
+    const { products, itemsOnPage } = props;
+    const { activeCategory, pagesCount, activePage } = currentState;
+
+    const categoryProducts = products.filter(item => item.category === activeCategory);
+    const updatedPagesCount = Math.ceil(categoryProducts.length / itemsOnPage);
+    const updatedActivePage = pagesCount === updatedPagesCount ? activePage : 0;
+
+    return {
+      currentState,
+      pagesCount: updatedPagesCount,
+      activePage: updatedActivePage,
+      categoryProducts,
+    };
   }
 
   handlePageSwipe(pageChange) {
-    const { products } = this.props;
-    const { activeCategory, activePage } = this.state;
-
-    const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / 8);
+    const { activePage, pagesCount } = this.state;
 
     let actualPage = activePage;
     if (pageChange === 'increment') {
@@ -43,38 +53,33 @@ class NewFurniture extends React.Component {
   }
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activePage: newPage,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
-
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
-  }
-
-  toggleShowAllProducts() {
-    this.setState(prevState => ({ showAllProducts: !prevState.showAllProducts }));
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize() {
-    this.setState({
-      isMobile: window.innerWidth <= 768,
-      isTablet: window.innerWidth > 768 && window.innerWidth <= 992,
-    });
+    this.setState({ isFading: true });
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        isFading: false,
+      });
+    }, this.state.fadeTime);
   }
 
   render() {
-    const { categories, products } = this.props;
-    const { activeCategory, activePage, showAllProducts } = this.state;
-
-    const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / 8);
+    const { categories, itemsOnPage } = this.props;
+    const {
+      activeCategory,
+      categoryProducts,
+      isFading,
+      activePage,
+      pagesCount,
+    } = this.state;
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -90,54 +95,51 @@ class NewFurniture extends React.Component {
       );
     }
 
-    let displayedProducts = categoryProducts;
-
-    if (!showAllProducts && this.state.isMobile) {
-      displayedProducts = categoryProducts.slice(activePage * 8, (activePage + 1) * 2);
-    } else if (!showAllProducts && this.state.isTablet) {
-      displayedProducts = categoryProducts.slice(activePage * 8, (activePage + 1) * 3);
-    } else if (!showAllProducts) {
-      displayedProducts = categoryProducts.slice(activePage * 8, (activePage + 1) * 8);
-    }
-
     return (
       <Swipeable action={this.handlePageSwipe}>
         <div className={styles.root}>
           <div className='container'>
             <div className={styles.panelBar}>
-              <div className='row no-gutters align-items-end'>
-                <div className={'col-auto ' + styles.heading}>
-                  <h3>New furniture</h3>
-                </div>
-                <div className={'col ' + styles.menu}>
-                  <ul>
-                    {categories.map(item => (
-                      <li key={item.id}>
-                        <a
-                          className={item.id === activeCategory && styles.active}
-                          onClick={() => this.handleCategoryChange(item.id)}
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div
-                  className={'col-auto ' + styles.dots}
-                  onDoubleClick={this.toggleShowAllProducts}
-                >
-                  {!showAllProducts && <ul>{dots}</ul>}
-                  <ul>{showAllProducts && dots}</ul>
-                </div>
+              <div className={'col-auto ' + styles.heading}>
+                <h3>New furniture</h3>
+              </div>
+              <div className={'col-auto ' + styles.menu}>
+                <ul>
+                  {categories.map(item => (
+                    <li key={item.id}>
+                      <a
+                        className={item.id === activeCategory && styles.active}
+                        onClick={() => this.handleCategoryChange(item.id)}
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={'col-auto ' + styles.dots}>
+                <ul>{dots}</ul>
               </div>
             </div>
-            <div className='row'>
-              {displayedProducts.map(item => (
-                <div key={item.id} className='col-6 col-md-4 col-sm-6 col-lg-3'>
-                  <ProductBox {...item} />
-                </div>
-              ))}
+            <div
+              className={`row justify-content-center ${
+                isFading ? styles.fadeOut : styles.fadeIn
+              }`}
+            >
+              {categoryProducts
+                .slice(activePage * itemsOnPage, (activePage + 1) * itemsOnPage)
+                .map(item => (
+                  <div
+                    key={item.id}
+                    className={clsx(
+                      'col-sm-6 col-md-4 col-lg-3',
+                      styles.colXSmall,
+                      styles.colXXSmall
+                    )}
+                  >
+                    <ProductBox {...item} />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -165,6 +167,7 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  itemsOnPage: PropTypes.number,
 };
 
 NewFurniture.defaultProps = {
@@ -172,4 +175,8 @@ NewFurniture.defaultProps = {
   products: [],
 };
 
-export default NewFurniture;
+function mapStateToProps(state) {
+  return getItemsOnPage(state.activeViewMode);
+}
+
+export default connect(mapStateToProps)(NewFurniture);
