@@ -703,6 +703,7 @@ const initialState = {
   cart: {
     products: [],
   },
+
   brands: [
     {
       id: 1,
@@ -729,6 +730,9 @@ const initialState = {
       url: 'images/brands/brands-6.jpg',
     },
   ],
+
+  activeViewMode: 'desktop',
+
 };
 
 export default initialState;
