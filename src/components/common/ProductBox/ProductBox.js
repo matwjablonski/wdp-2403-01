@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import clsx from 'clsx';
@@ -57,7 +58,8 @@ const ProductBox = ({
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
-            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+            <FontAwesomeIcon icon={faShoppingBasket} />
+            Add to cart
           </Button>
         </div>
       </div>
@@ -91,7 +93,9 @@ const ProductBox = ({
         </div>
         <div className={styles.price}>
           <Price price={originalPrice} variant='original' />
-          <Price price={price} variant='actual' />
+          <Button className={styles.priceBtn}>
+            <Price price={price} variant='actual' />
+          </Button>
         </div>
       </div>
     </div>
