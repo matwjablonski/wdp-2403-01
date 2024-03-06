@@ -34,12 +34,14 @@ const Brands = () => {
   const handleNext = () => {
     const nextIndex = (currentIndex + slidesPerPage[currentLayout]) % brandsImg.length;
     setCurrentIndex(nextIndex);
+    console.log(nextIndex);
   };
 
   const handlePrev = () => {
-    const prevIndex =
-      (currentIndex - slidesPerPage[currentLayout] + brandsImg.length) %
-      brandsImg.length;
+    let prevIndex = currentIndex - slidesPerPage[currentLayout];
+    if (prevIndex < 0) {
+      prevIndex = brandsImg.length + prevIndex;
+    }
     setCurrentIndex(prevIndex);
   };
 
