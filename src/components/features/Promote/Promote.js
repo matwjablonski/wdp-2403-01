@@ -16,18 +16,7 @@ const Promote = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-3'>
-            {promotedProduct && (
-              <PromoteProductBox
-                id={promotedProduct.id}
-                name={promotedProduct.name}
-                category={promotedProduct.category}
-                stars={promotedProduct.stars}
-                favorite={promotedProduct.favorite}
-                compare={promotedProduct.compare}
-                price={promotedProduct.price}
-                originalPrice={promotedProduct.originalPrice}
-              />
-            )}
+            {promotedProduct && <PromoteProductBox {...promotedProduct} />}
           </div>
           <FeaturedProduct />
         </div>
