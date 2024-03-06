@@ -87,7 +87,7 @@ class NewFurniture extends React.Component {
         <li key={i}>
           <a
             onClick={() => this.handlePageChange(i)}
-            className={i === activePage ? styles.active : ''}
+            className={i === activePage && styles.active}
           >
             page {i}
           </a>
@@ -100,27 +100,25 @@ class NewFurniture extends React.Component {
         <div className={styles.root}>
           <div className='container'>
             <div className={styles.panelBar}>
-              <div className='row no-gutters align-items-end'>
-                <div className={'col-auto ' + styles.heading}>
-                  <h3>New furniture</h3>
-                </div>
-                <div className={'col ' + styles.menu}>
-                  <ul>
-                    {categories.map(item => (
-                      <li key={item.id}>
-                        <a
-                          qclassName={item.id === activeCategory && styles.active}
-                          onClick={() => this.handleCategoryChange(item.id)}
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                  <div className={'col-auto ' + styles.dots}>
+              <div className={'col-auto ' + styles.heading}>
+                <h3>New furniture</h3>
+              </div>
+              <div className={'col-auto ' + styles.menu}>
+                <ul>
+                  {categories.map(item => (
+                    <li key={item.id}>
+                      <a
+                        className={item.id === activeCategory && styles.active}
+                        onClick={() => this.handleCategoryChange(item.id)}
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={'col-auto ' + styles.dots}>
                 <ul>{dots}</ul>
-                </div>
               </div>
             </div>
             <div
