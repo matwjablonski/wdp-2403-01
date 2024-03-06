@@ -137,16 +137,17 @@
 }
 
   .sliderItems {
-    width: 100%;
     margin-top: 10px;
+    margin: 2px;
     padding: 0 35px;
+    background-color: white;
 
     :global(.slick-prev) {
-      left: -35px;
+      left: -32px;
     }
 
     :global(.slick-next) {
-      right: -35px;
+      right: -32px;
     }
 
     :global(.slick-slide) {
