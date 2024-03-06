@@ -64,7 +64,7 @@ const Gallery = () => {
       <div className={'container'}>
         <div className={clsx('row d-flex flex-column flex-lg-row', styles.panel)}>
           <div className={clsx('col-lg-6 d-flex flex-column', styles.leftPanel)}>
-            <PanelBar title='Furniture Gallery' />
+            <PanelBar title='Furniture Gallery' className={styles.PanelBar} />
             <PanelMenu
               menuItems={categories}
               action={handleCategoryChange}

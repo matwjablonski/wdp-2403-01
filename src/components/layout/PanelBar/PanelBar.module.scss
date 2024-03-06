@@ -3,11 +3,19 @@
 .panelBar {
   margin-bottom: 30px;
   position: relative;
+  display: flex;
+  gap: 10px 0;
+  align-items: flex-end;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   border-bottom: 4px solid $panelbar-border;
 
-  // :global(.row) > * {
-  //   border-bottom: 4px solid $panelbar-border;
-  // }
+  @media (max-width: 768px) {
+    justify-content: center;
+    border-top: 4px solid $panelbar-border;
+    border-bottom: none;
+  }
 
   .heading {
     position: relative;
@@ -28,6 +36,12 @@
       left: 0;
       width: 45px;
       border-bottom: 4px solid $panelbar-primary;
+    }
+
+    @media (max-width: 768px) {
+      &::before {
+        border-bottom: none;
+      }
     }
   }
 }
