@@ -109,8 +109,8 @@ class NewFurniture extends React.Component {
                     {categories.map(item => (
                       <li key={item.id}>
                         <a
+                          qclassName={item.id === activeCategory && styles.active}
                           onClick={() => this.handleCategoryChange(item.id)}
-                          className={item.id === activeCategory ? styles.active : ''}
                         >
                           {item.name}
                         </a>
@@ -118,12 +118,8 @@ class NewFurniture extends React.Component {
                     ))}
                   </ul>
                 </div>
-                <div
-                  className={'col-auto ' + styles.dots}
-                  onDoubleClick={this.toggleShowAllProducts}
-                >
-                  {!showAllProducts && <ul>{dots}</ul>}
-                  <ul>{showAllProducts && dots}</ul>
+                  <div className={'col-auto ' + styles.dots}>
+                <ul>{dots}</ul>
                 </div>
               </div>
             </div>
