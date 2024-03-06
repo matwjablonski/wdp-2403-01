@@ -64,91 +64,99 @@ const Gallery = () => {
       <div className={'container'}>
         <div className={clsx('row d-flex flex-column flex-lg-row', styles.panel)}>
           <div className={clsx('col-lg-6 d-flex flex-column', styles.leftPanel)}>
-            <PanelBar title='Furniture Gallery' className={styles.PanelBar} />
-            <PanelMenu
-              menuItems={categories}
-              action={handleCategoryChange}
-              activeItem={activeCategory}
-              classActive={styles.active}
-              noHover={true}
-            />
+            <PanelBar title='Furniture Gallery' />
             <div className={styles.gallery}>
               <SalesPanel className={styles.bkg} sales={activeSale}>
-                <div className={styles.buttons}>
-                  <Button
-                    variant='outline'
-                    className={styles.btn}
-                    data-tip='favorite'
-                    data-for='test'
-                  >
-                    <FontAwesomeIcon icon={faHeart} />
-                  </Button>
-                  <Button
-                    variant='outline'
-                    className={styles.btn}
-                    data-tip='compare'
-                    data-for='test'
-                  >
-                    <FontAwesomeIcon icon={faExchangeAlt} />
-                  </Button>
-                  <Button
-                    variant='outline'
-                    className={styles.btn}
-                    data-tip='quick view'
-                    data-for='test'
-                  >
-                    <FontAwesomeIcon icon={faEye} />
-                  </Button>
-                  <Button
-                    variant='outline'
-                    className={styles.btn}
-                    data-tip='add to cart'
-                    data-for='test'
-                  >
-                    <FontAwesomeIcon icon={faShoppingBasket} />
-                  </Button>
-                  <ReactTooltip
-                    id='test'
-                    place='right'
-                    type='info'
-                    effect='solid'
-                    arrowColor='black'
-                    className={styles.tooltip}
-                  />
-                </div>
-                <div className={styles.detailsWrapper}>
-                  <div className={clsx('', styles.details)}>
-                    <div className={styles.detailsPrice}>
-                      <Price price={activeItem.price} variant='actual' />
-                      <Price price={activeItem.originalPrice} variant='original' />
-                    </div>
-                    <h5>{activeItem.name}</h5>
-                    <div className={styles.stars}>
-                      {[1, 2, 3, 4, 5].map(i => (
-                        <a key={i} href='#'>
-                          {i <= activeItem.stars ? (
-                            <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-                          ) : (
-                            <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-                          )}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </SalesPanel>
-            </div>
-            <div className={clsx('', styles.sliderItems)}>
-              <Slider {...settings}>
-                {items.map(item => (
-                  <div key={item.id} onClick={() => setActiveItem(item)} className=''>
-                    <ProductImage
-                      {...item}
-                      className={clsx(styles.imgBody, styles.notActive)}
+                <PanelMenu
+                  menuItems={categories}
+                  action={handleCategoryChange}
+                  activeItem={activeCategory}
+                  classActive={styles.active}
+                  noHover={true}
+                />
+                <div className={styles.content}>
+                  <div className={styles.buttons}>
+                    <Button
+                      variant='outline'
+                      className={styles.btn}
+                      data-tip='favorite'
+                      data-for='test'
+                    >
+                      <FontAwesomeIcon icon={faHeart} />
+                    </Button>
+                    <Button
+                      variant='outline'
+                      className={styles.btn}
+                      data-tip='compare'
+                      data-for='test'
+                    >
+                      <FontAwesomeIcon icon={faExchangeAlt} />
+                    </Button>
+                    <Button
+                      variant='outline'
+                      className={styles.btn}
+                      data-tip='quick view'
+                      data-for='test'
+                    >
+                      <FontAwesomeIcon icon={faEye} />
+                    </Button>
+                    <Button
+                      variant='outline'
+                      className={styles.btn}
+                      data-tip='add to cart'
+                      data-for='test'
+                    >
+                      <FontAwesomeIcon icon={faShoppingBasket} />
+                    </Button>
+                    <ReactTooltip
+                      id='test'
+                      place='right'
+                      type='info'
+                      effect='solid'
+                      arrowColor='black'
+                      className={styles.tooltip}
                     />
                   </div>
-                ))}
-              </Slider>
+                  <div className={styles.detailsWrapper}>
+                    <div className={clsx('', styles.details)}>
+                      <div className={styles.detailsPrice}>
+                        <Price price={activeItem.price} variant='actual' />
+                        <Price price={activeItem.originalPrice} variant='original' />
+                      </div>
+                      <h5>{activeItem.name}</h5>
+                      <div className={styles.stars}>
+                        {[1, 2, 3, 4, 5].map(i => (
+                          <a key={i} href='#'>
+                            {i <= activeItem.stars ? (
+                              <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+                            ) : (
+                              <FontAwesomeIcon icon={farStar}>
+                                {i} stars
+                              </FontAwesomeIcon>
+                            )}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className={clsx('', styles.sliderItems)}>
+                  <Slider {...settings}>
+                    {items.map(item => (
+                      <div
+                        key={item.id}
+                        onClick={() => setActiveItem(item)}
+                        className=''
+                      >
+                        <ProductImage
+                          {...item}
+                          className={clsx(styles.imgBody, styles.notActive)}
+                        />
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              </SalesPanel>
             </div>
           </div>
           <div className={clsx('col-lg-6', styles.rightPanel)}>
