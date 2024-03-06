@@ -8,22 +8,27 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Swipeable from '../../common/Swipeable/Swipeable';
 import clsx from 'clsx';
+import getMultipleRandom from '../../../utils/getMultipleRandom';
+import { useMemo } from 'react';
 
 const Feedback = () => {
-  const clientsOpinions = useSelector(state => state.clientsOpinions);
+  const allClientsOpinions = useSelector(state => state.clientsOpinions);
+  const clientsOpinions = useMemo(() => {
+    return getMultipleRandom(allClientsOpinions, 3);
+  }, [allClientsOpinions]);
   const [activeOpinion, setActiveOpinion] = useState(clientsOpinions[0]);
-  const [activeDot, setActiveDot] = useState('1');
+  const [activeDot, setActiveDot] = useState(clientsOpinions[0].id);
 
   const handleOpinionChange = newOpinion => {
-    if (newOpinion === '1') {
+    if (newOpinion === clientsOpinions[0].id) {
       setActiveOpinion(clientsOpinions[0]);
-      setActiveDot('1');
-    } else if (newOpinion === '2') {
+      setActiveDot(clientsOpinions[0].id);
+    } else if (newOpinion === clientsOpinions[1].id) {
       setActiveOpinion(clientsOpinions[1]);
-      setActiveDot('2');
-    } else if (newOpinion === '3') {
+      setActiveDot(clientsOpinions[1].id);
+    } else if (newOpinion === clientsOpinions[2].id) {
       setActiveOpinion(clientsOpinions[2]);
-      setActiveDot('3');
+      setActiveDot(clientsOpinions[2].id);
     }
   };
 
