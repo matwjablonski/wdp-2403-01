@@ -261,17 +261,21 @@
 
   li {
     flex: 1;
-    margin: 0 0!important;
-    border-top: 1px solid rgb(243, 243, 241);
-    border-right: 1px solid rgb(243, 243, 241);
+    margin: 2px 1px!important;
 
     &:first-of-type {
-      border-left: 1px solid rgb(243, 243, 241);
+      margin-left: 2px!important;
+    }
+
+    &:last-of-type {
+      margin-right: 2px!important;
     }
 
     a {
+      background-color: white;
+
       &.active {
-        background-color: rgb(243, 243, 241);
+        background-color: transparent;
       }
 
       &.active,
@@ -281,7 +285,7 @@
           position: absolute;
           top: -2px;
           left: -1px;
-          width: 101%;
+          width: 102%;
           border-top: 4px solid $panelbar-primary;
         }
       }
