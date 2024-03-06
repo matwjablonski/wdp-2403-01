@@ -7,6 +7,10 @@
   .panel {
     @media only screen and (max-width: 1000px) {
       row-gap: 15px;
+
+      .rightPanel {
+        display: none;
+      }
     }
   }
 
