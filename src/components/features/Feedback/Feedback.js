@@ -34,11 +34,13 @@ const Feedback = () => {
       activeIndex++;
       if (activeIndex < 3) {
         setActiveOpinion(clientsOpinions[activeIndex]);
+        setActiveDot((++activeIndex).toString());
       }
     } else if (opinionChange === 'decrement') {
       activeIndex--;
       if (activeIndex >= 0) {
         setActiveOpinion(clientsOpinions[activeIndex]);
+        setActiveDot((++activeIndex).toString());
       }
     }
   };
