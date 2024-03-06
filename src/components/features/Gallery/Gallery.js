@@ -34,15 +34,27 @@ const Gallery = () => {
   const [activeItem, setActiveItem] = useState(items[3]);
   const activeSale = { filePath: getFilePath(activeItem) };
   const promItems = useSelector(state => getPromByType(state, 'gallery-panel'));
+  const [fading, setFading] = useState(false);
 
   useEffect(() => {
+    console.log('fadeout effekt ', fading);
     setActiveItem(items[0]);
     activeSale.filePath = getFilePath(activeItem);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory]);
 
   const handleCategoryChange = newCategory => {
+    setFading(true);
     setActiveCategory(newCategory);
+  };
+
+  const handleImageClick = item => {
+    setFading(true);
+    setActiveItem(item);
+  };
+
+  const handleFadeOut = () => {
+    setFading(false);
   };
 
   function getFilePath(item) {
@@ -56,7 +68,24 @@ const Gallery = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 1,
+    slidesToScroll: 6,
+    adaptiveHeight: false,
+    responsive: [
+      {
+        breakpoint: 776,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+        },
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 8,
+          slidesToScroll: 8,
+        },
+      },
+    ],
   };
 
   return (
@@ -65,8 +94,11 @@ const Gallery = () => {
         <div className={clsx('row d-flex flex-column flex-lg-row', styles.panel)}>
           <div className={clsx('col-lg-6 d-flex flex-column', styles.leftPanel)}>
             <PanelBar title='Furniture Gallery' />
-            <div className={styles.gallery}>
-              <SalesPanel className={styles.bkg} sales={activeSale}>
+            <div className={styles.gallery} onTransitionEnd={handleFadeOut}>
+              <SalesPanel
+                className={clsx(styles.bkg, fading ? styles.fadeOut : styles.fadeIn)}
+                sales={activeSale}
+              >
                 <PanelMenu
                   menuItems={categories}
                   action={handleCategoryChange}
@@ -74,7 +106,7 @@ const Gallery = () => {
                   classActive={styles.active}
                   noHover={true}
                 />
-                <div className={styles.content}>
+                <div className={clsx(styles.content)}>
                   <div className={styles.buttons}>
                     <Button
                       variant='outline'
@@ -145,7 +177,7 @@ const Gallery = () => {
                     {items.map(item => (
                       <div
                         key={item.id}
-                        onClick={() => setActiveItem(item)}
+                        onClick={() => handleImageClick(item)}
                         className=''
                       >
                         <ProductImage
