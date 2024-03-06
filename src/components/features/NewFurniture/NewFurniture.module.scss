@@ -2,12 +2,35 @@
 @import "../../../styles/keyframes.scss";
 
 .root {
+
+  .colXSmall {
+    @media (max-width: 600px) {
+     max-width: 60%;
+     flex: 0 0 60%;
+    }
+  }
+  .colXXSmall {
+    @media (max-width: 400px) {
+     max-width: 100%;
+     flex: 0 0 100%;
+    }
+  }
+
   .panelBar {
     margin-bottom: 30px;
     position: relative;
+    display: flex;
+    gap: 10px 0;
+    align-items: end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 4px solid $panelbar-border;
 
-    :global(.row) > * {
-      border-bottom: 4px solid $panelbar-border;
+    @media (max-width: 768px) {
+      justify-content: center;
+      border-top: 4px solid $panelbar-border;
+      border-bottom: none;
     }
 
     .heading {
@@ -68,16 +91,19 @@
     }
 
     .dots {
-      position: absolute;
-      right: 0;
-      top: 0;
+      display: flex;
+      align-self: center;
 
       ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 5px;
+        align-items: center;
         margin: 0;
-        padding: 0 0 0 1rem;
+        padding: 2px 0 0 1rem;
         list-style: none;
         background-color: $panelbar-bg;
-        transform: translateY(15px);
 
         li {
           display: inline-block;
