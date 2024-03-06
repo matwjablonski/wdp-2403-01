@@ -150,7 +150,9 @@ const Gallery = () => {
                       >
                         <ProductImage
                           {...item}
-                          className={clsx(styles.imgBody, styles.notActive)}
+                          className={clsx(
+                            activeItem.id !== item.id ? styles.nonActive : ''
+                          )}
                         />
                       </div>
                     ))}

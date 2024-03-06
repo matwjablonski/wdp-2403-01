@@ -3,8 +3,9 @@ import React from 'react';
 
 import ImageWrapper from '../ImageWrapper/ImageWrapper';
 
-const ProductImage = ({ name, id, category }) => {
+const ProductImage = ({ name, id, category, className: classNameProps }) => {
   const imageProps = {
+    className: classNameProps,
     alt: name,
     filePath: `${process.env.PUBLIC_URL}/images/products/${category}/${id}.jpg`,
   };
