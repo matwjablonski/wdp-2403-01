@@ -34,27 +34,26 @@ const Gallery = () => {
   const [activeItem, setActiveItem] = useState(items[3]);
   const activeSale = { filePath: getFilePath(activeItem) };
   const promItems = useSelector(state => getPromByType(state, 'gallery-panel'));
-  const [fading, setFading] = useState(false);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    console.log('fadeout effekt ', fading);
     setActiveItem(items[0]);
     activeSale.filePath = getFilePath(activeItem);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeCategory]);
 
   const handleCategoryChange = newCategory => {
-    setFading(true);
+    setIsFading(true);
     setActiveCategory(newCategory);
   };
 
   const handleImageClick = item => {
-    setFading(true);
+    setIsFading(true);
     setActiveItem(item);
   };
 
   const handleFadeOut = () => {
-    setFading(false);
+    setIsFading(false);
   };
 
   function getFilePath(item) {
@@ -96,7 +95,7 @@ const Gallery = () => {
             <PanelBar title='Furniture Gallery' />
             <div className={styles.gallery} onTransitionEnd={handleFadeOut}>
               <SalesPanel
-                className={clsx(styles.bkg, fading ? styles.fadeOut : styles.fadeIn)}
+                className={clsx(styles.bkg, isFading ? styles.fadeOut : styles.fadeIn)}
                 sales={activeSale}
               >
                 <PanelMenu
