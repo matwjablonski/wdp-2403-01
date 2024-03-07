@@ -32,8 +32,10 @@
     .cartBox {
       display: inline-block;
       position: relative;
+      padding-right: 40px;
       color: $header-cart-text;
       @extend %hover-effects;
+
 
       .cartIcon {
         background-color: $header-cart-bg;
@@ -62,7 +64,7 @@
         color: $header-cart-counter-text;
         position: absolute;
         top: 50%;
-        right: 0;
+        right: 40%;
         transform: translate(50%, -50%);
       }
 
@@ -70,6 +72,12 @@
         .cartIcon {
           background-color: lighten($header-claim-primary, 10%);
         }
+      }
+
+      .itemsAmount {
+        position: absolute;
+        top: 15%;
+        left: 25%;
       }
     }
   }
