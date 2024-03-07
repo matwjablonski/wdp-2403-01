@@ -729,7 +729,34 @@ const initialState = {
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore nobis sit sunt adipisci molestias officiis officia quae, laudantium vitae explicabo ullam quas aspernatur quam quis fuga suscipit pariatur natus? Culpa.',
     },
   ],
+  brands: [
+    {
+      id: 1,
+      url: 'images/brands/brands-1.jpg',
+    },
+    {
+      id: 2,
+      url: 'images/brands/brands-2.jpg',
+    },
+    {
+      id: 3,
+      url: 'images/brands/brands-3.jpg',
+    },
+    {
+      id: 4,
+      url: 'images/brands/brands-4.jpg',
+    },
+    {
+      id: 5,
+      url: 'images/brands/brands-5.jpg',
+    },
+    {
+      id: 6,
+      url: 'images/brands/brands-6.jpg',
+    },
+  ],
   activeViewMode: 'desktop',
+
 };
 
 export default initialState;
