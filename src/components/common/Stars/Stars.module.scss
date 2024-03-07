@@ -4,5 +4,18 @@
     a {
         text-decoration: none;
         color: $productbox-stars-clr;
+        width: 20px;
+
+        svg {
+            padding: 1px;
+
+            &.colorfulStarOnHover {
+                color: $star-hover;
+            }
+
+            &.noHoverEff:hover {
+                color: $productbox-stars-clr;
+            }
+        }
     }
 }
