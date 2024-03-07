@@ -8,23 +8,45 @@ import MobileCompanyClaim, {
   phoneNumber,
 } from '../CompanyClaimMedia/CompanyClaimMedia';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMobileAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+
 const CompanyClaim = () => {
   return (
     <div className={styles.root}>
       <div className='container'>
-        <div className={`row align-items-center ${styles.desktop}`}>
-          <div className={`col text-left ${styles.phoneNumber}`}>{phoneNumber}</div>
-          {logo}
-          <div className={`col text-right ${styles.cart}`}>{cart}</div>
-        </div>
-
-        <MobileCompanyClaim>
-          {logo}
-          <div className={`col mt-3`}>
-            <div className={`col text-center ${styles.cart}`}>{cart}</div>
-            <div className={`col text-center ${styles.phoneNumber}`}>{phoneNumber}</div>
+        <div className='row align-items-center'>
+          <div className={`col text-left ${styles.phoneNumber}`}>
+            <p>
+              <FontAwesomeIcon className={styles.icon} icon={faMobileAlt} /> 2300 - 3560
+              - 222
+            </p>
           </div>
-        </MobileCompanyClaim>
+          <div className='col text-center'>
+            <a href='#'>
+              <img src='/images/logo.png' alt='Bazar' />
+            </a>
+          </div>
+          <div className={`col text-right ${styles.cart}`}>
+            <a href='#' className={styles.cartBox}>
+              <div className={styles.cartIcon}>
+                <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
+              </div>
+              <div className={styles.cartCounter}>
+                <div className={styles.itemsAmount}>99999</div>
+              </div>
+            </a>
+          </div>
+          <MobileCompanyClaim>
+            {logo}
+            <div className={`col mt-3`}>
+              <div className={`col text-center ${styles.cart}`}>{cart}</div>
+              <div className={`col text-center ${styles.phoneNumber}`}>
+                {phoneNumber}
+              </div>
+            </div>
+          </MobileCompanyClaim>
+        </div>
       </div>
     </div>
   );
