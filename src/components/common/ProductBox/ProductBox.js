@@ -1,6 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,12 +25,29 @@ const ProductBox = ({
   compare,
   category,
 }) => {
+  const [isFav, setIsFav] = useState(favorite);
+
   const favoriteButtonActive = clsx('outline', {
-    [styles.favorite]: favorite,
+    [styles.favorite]: isFav,
   });
   const compareButtonActive = clsx('outline', {
     [styles.compare]: compare,
   });
+
+  useEffect(() => {
+    const favoriteFromStorage = JSON.parse(localStorage.getItem('favorites')) || [];
+    setIsFav(favoriteFromStorage.includes(id));
+  }, [id]);
+
+  const addToFavorite = e => {
+    e.preventDefault();
+    setIsFav(!isFav);
+    const favoritesFromStorage = JSON.parse(localStorage.getItem('favorites')) || [];
+    const update = isFav
+      ? favoritesFromStorage.filter(favId => favId !== id)
+      : [...favoritesFromStorage, id];
+    localStorage.setItem('favorites', JSON.stringify(update));
+  };
 
   return (
     <div className={styles.root}>
@@ -62,7 +79,11 @@ const ProductBox = ({
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button variant='outline' className={favoriteButtonActive}>
+          <Button
+            variant='outline'
+            className={favoriteButtonActive}
+            onClick={addToFavorite}
+          >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button variant='outline' className={compareButtonActive}>
