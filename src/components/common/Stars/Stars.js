@@ -12,32 +12,41 @@ import clsx from 'clsx';
 
 const Stars = props => {
   const dispatch = useDispatch();
-  let [filledStarsNum, setFilledStarsNum] = useState(props.stars);
+  let [isGradedFlag, setIsGradedFlag] = useState(false);
   const productName = props.productName;
-  let [onMouseEnterFlag, setOnMouseEnterFlag] = useState(false);
   const clientsGrades = useSelector(state => state.clientsGrades);
-
   const checkIfThisProductIsGraded = () => {
     for (let clientGrade of clientsGrades) {
       if (clientGrade.gradedProductName === productName) {
-        filledStarsNum = parseInt(clientGrade.grade);
-        onMouseEnterFlag = true;
+        isGradedFlag = true;
+        return clientGrade.grade;
       }
     }
+    return props.stars;
   };
+  let [clientGrade, setClientGrade] = useState(checkIfThisProductIsGraded);
+  let [filledStarsNum, setFilledStarsNum] = useState(clientGrade);
+  let [onMouseEnterFlag, setOnMouseEnterFlag] = useState(isGradedFlag ? true : false);
+
   const fillSelectedStars = id => {
     onMouseEnterFlag = true;
     setOnMouseEnterFlag(onMouseEnterFlag);
-    if (id === null) {
-      id = 2;
+    if (id === null && isGradedFlag === false) {
+      id = props.stars;
+    } else if (id === null && isGradedFlag === true) {
+      id = clientGrade;
     }
     filledStarsNum = parseInt(id);
     setFilledStarsNum(filledStarsNum);
   };
-  const unfillSelectedStars = stars => {
-    filledStarsNum = stars;
+  const unfillSelectedStars = () => {
+    if (isGradedFlag === false) {
+      filledStarsNum = props.stars;
+      onMouseEnterFlag = false;
+    } else if (isGradedFlag === true) {
+      filledStarsNum = clientGrade;
+    }
     setFilledStarsNum(filledStarsNum);
-    onMouseEnterFlag = false;
     setOnMouseEnterFlag(onMouseEnterFlag);
   };
   const addClientGrade = e => {
@@ -47,9 +56,11 @@ const Stars = props => {
       grade = e.target.getAttribute('id');
     }
     dispatch(addGrade({ productName, grade }));
+    setClientGrade(parseInt(grade));
+    setFilledStarsNum(clientGrade);
+    setIsGradedFlag(true);
+    fillSelectedStars(grade);
   };
-
-  checkIfThisProductIsGraded();
 
   return (
     <div className={styles.stars}>
@@ -61,7 +72,7 @@ const Stars = props => {
               icon={faStar}
               id={i}
               onMouseEnter={e => fillSelectedStars(e.target.getAttribute('id'))}
-              onMouseLeave={() => unfillSelectedStars(props.stars)}
+              onMouseLeave={() => unfillSelectedStars()}
               onClick={e => addClientGrade(e)}
             >
               {i} stars
@@ -72,7 +83,7 @@ const Stars = props => {
               icon={farStar}
               id={i}
               onMouseEnter={e => fillSelectedStars(e.target.getAttribute('id'))}
-              onMouseLeave={() => unfillSelectedStars(props.stars)}
+              onMouseLeave={() => unfillSelectedStars()}
               onClick={e => addClientGrade(e)}
             >
               {i} stars
