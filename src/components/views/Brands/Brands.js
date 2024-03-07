@@ -7,30 +7,31 @@ import Swipeable from '../../common/Swipeable/Swipeable';
 
 const Brands = () => {
   const brandsImg = useSelector(state => state.brands);
+  const layout = useSelector(state => state.activeViewMode);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentLayout, setCurrentLayout] = useState('DESKTOP');
+  const [currentLayout, setCurrentLayout] = useState(layout);
   const slidesPerPage = {
-    DESKTOP: 6,
-    TABLET: 4,
-    MOBILE: 2,
+    desktop: 6,
+    tablet: 4,
+    mobile: 2,
   };
 
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-      let layout = 'DESKTOP';
+      let view = layout;
       if (screenWidth < 768) {
-        layout = 'MOBILE';
+        view = 'mobile';
       } else if (screenWidth < 1200) {
-        layout = 'TABLET';
+        view = 'tablet';
       }
-      setCurrentLayout(layout);
+      setCurrentLayout(view);
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [layout]);
 
   const handleNext = () => {
     const nextIndex = (currentIndex + slidesPerPage[currentLayout]) % brandsImg.length;
