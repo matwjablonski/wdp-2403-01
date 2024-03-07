@@ -5,13 +5,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addGrade } from '../../../redux/clientsGradesRedux';
 import clsx from 'clsx';
 
 const Stars = props => {
+  const dispatch = useDispatch();
   let [filledStarsNum, setFilledStarsNum] = useState(props.stars);
+  const productName = props.productName;
   let [onMouseEnterFlag, setOnMouseEnterFlag] = useState(false);
-  const fillSelectedStars = e => {
-    let id = e.target.getAttribute('id');
+  const clientsGrades = useSelector(state => state.clientsGrades);
+
+  const checkIfThisProductIsGraded = () => {
+    for (let clientGrade of clientsGrades) {
+      if (clientGrade.gradedProductName === productName) {
+        filledStarsNum = parseInt(clientGrade.grade);
+        onMouseEnterFlag = true;
+      }
+    }
+  };
+  const fillSelectedStars = id => {
     onMouseEnterFlag = true;
     setOnMouseEnterFlag(onMouseEnterFlag);
     if (id === null) {
@@ -26,6 +40,16 @@ const Stars = props => {
     onMouseEnterFlag = false;
     setOnMouseEnterFlag(onMouseEnterFlag);
   };
+  const addClientGrade = e => {
+    e.preventDefault();
+    let grade = e.target.parentElement.getAttribute('id');
+    if (grade === null) {
+      grade = e.target.getAttribute('id');
+    }
+    dispatch(addGrade({ productName, grade }));
+  };
+
+  checkIfThisProductIsGraded();
 
   return (
     <div className={styles.stars}>
@@ -36,8 +60,9 @@ const Stars = props => {
               className={clsx(onMouseEnterFlag && styles.colorfulStarOnHover)}
               icon={faStar}
               id={i}
-              onMouseEnter={e => fillSelectedStars(e)}
+              onMouseEnter={e => fillSelectedStars(e.target.getAttribute('id'))}
               onMouseLeave={() => unfillSelectedStars(props.stars)}
+              onClick={e => addClientGrade(e)}
             >
               {i} stars
             </FontAwesomeIcon>
@@ -46,8 +71,9 @@ const Stars = props => {
               className={styles.noHoverEff}
               icon={farStar}
               id={i}
-              onMouseEnter={e => fillSelectedStars(e)}
+              onMouseEnter={e => fillSelectedStars(e.target.getAttribute('id'))}
               onMouseLeave={() => unfillSelectedStars(props.stars)}
+              onClick={e => addClientGrade(e)}
             >
               {i} stars
             </FontAwesomeIcon>
@@ -60,6 +86,7 @@ const Stars = props => {
 
 Stars.propTypes = {
   stars: PropTypes.number,
+  productName: PropTypes.string,
 };
 
 export default Stars;

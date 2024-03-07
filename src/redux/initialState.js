@@ -733,6 +733,14 @@ const initialState = {
 
   activeViewMode: 'desktop',
 
+  clientsGrades: [
+    {
+      id: '1',
+      gradedProductName: 'Aenean Ru Bristique 3',
+      grade: '3',
+      clientID: '1',
+    },
+  ],
 };
 
 export default initialState;

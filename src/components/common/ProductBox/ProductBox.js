@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import styles from './ProductBox.module.scss';
@@ -44,7 +43,7 @@ const ProductBox = ({
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
-        <Stars stars={stars} />
+        <Stars stars={stars} productName={name} />
       </div>
       <div className={styles.line}></div>
       <div className={styles.actions}>
