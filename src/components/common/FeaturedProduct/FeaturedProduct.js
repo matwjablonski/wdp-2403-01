@@ -40,21 +40,18 @@ const FeaturedProduct = () => {
             <img
               alt='name'
               src={`${process.env.PUBLIC_URL}/images/products/featured/featured-1.jpg`}
-              className={styles.sliderImage}
             />
           </div>
           <div>
             <img
               alt='name'
               src={`${process.env.PUBLIC_URL}/images/products/featured/featured-2.jpg`}
-              className={styles.sliderImage}
             />
           </div>
           <div>
             <img
               alt='name'
               src={`${process.env.PUBLIC_URL}/images/products/featured/featured-3.jpg`}
-              className={styles.sliderImage}
             />
           </div>
         </Slider>
