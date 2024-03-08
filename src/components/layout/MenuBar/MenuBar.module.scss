@@ -4,8 +4,8 @@
   box-shadow: 2px 3.464px 6px $blackLowOpacity;
   background-color: $header-menubar-bg;
 
-  :global(.container) > :global(.row) {
-    height: 84px;
+  :global(.container)> :global(.row) {
+    height: 100px;
   }
 
   .menu {
@@ -48,5 +48,86 @@
         border-color: $header-menubar-text;
       }
     }
+  }
+
+  .mobileMenu {
+    visibility: hidden;
+  }
+
+  .option {
+    &:hover {
+      background-color: $button-hover-bg;
+      color: $button-text;
+    }
+
+    &.active {
+      background-color: $button-hover-bg;
+      color: $button-text;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .content {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+
+    .topPanel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .searchPanel {
+        order: 1;
+      }
+    }
+
+    .menu {
+      order: 2;
+    }
+  }
+
+  .menuToggle::after {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    align-items: center;
+
+    .mobileMenu {
+      visibility: visible;
+    }
+
+    .menuToggle {
+      background-color: $mobile-menuBar-menu-bg;
+      color: $button-text;
+      padding-right: 0;
+    }
+
+    .menu {
+      visibility: hidden;
+      position: absolute;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .container > .row {
+    height: 120px;
+  }
+
+  .topPanel {
+    width: 80%;
+  }
+  .searchPanel {
+    width: 20%;
   }
 }

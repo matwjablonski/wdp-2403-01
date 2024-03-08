@@ -1,0 +1,39 @@
+@import "../../../styles/settings.scss";
+
+.menu {
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+  ul {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin: 0 0.5rem;
+      font-weight: 600;
+
+      a {
+        color: $panelbar-text;
+        position: relative;
+        text-decoration: none;
+        font-size: 18px;
+        display: block;
+
+        &.active,
+        &:not(.noHover):hover {
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            border-bottom: 4px solid $panelbar-primary;
+          }
+        }
+      }
+    }
+  }
+}
