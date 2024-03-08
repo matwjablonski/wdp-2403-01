@@ -1,10 +1,11 @@
 import styles from './ImageWrapper.module.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { clsx } from 'clsx';
 
-const ImageWrapper = ({ name, filePath }) => {
+const ImageWrapper = ({ name, filePath, className: classNameProps }) => {
   return (
-    <div className={styles.root}>
+    <div className={clsx(styles.root, classNameProps)}>
       <img alt={name} src={filePath} />
     </div>
   );
@@ -13,6 +14,7 @@ const ImageWrapper = ({ name, filePath }) => {
 ImageWrapper.propTypes = {
   name: PropTypes.string,
   filePath: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default ImageWrapper;
