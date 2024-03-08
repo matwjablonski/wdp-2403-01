@@ -29,8 +29,8 @@ const Stars = props => {
   let [onMouseEnterFlag, setOnMouseEnterFlag] = useState(isGradedFlag ? true : false);
 
   const fillSelectedStars = id => {
-    onMouseEnterFlag = true;
-    setOnMouseEnterFlag(onMouseEnterFlag);
+    setIsGradedFlag(isGradedFlag);
+    setOnMouseEnterFlag(true);
     if (id === null && isGradedFlag === false) {
       id = props.stars;
     } else if (id === null && isGradedFlag === true) {
@@ -58,7 +58,8 @@ const Stars = props => {
     dispatch(addGrade({ productName, grade }));
     setClientGrade(parseInt(grade));
     setFilledStarsNum(clientGrade);
-    setIsGradedFlag(true);
+    isGradedFlag = true;
+    setIsGradedFlag(isGradedFlag);
     fillSelectedStars(grade);
   };
 
