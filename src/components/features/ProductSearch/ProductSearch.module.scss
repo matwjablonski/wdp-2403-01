@@ -85,3 +85,16 @@
     }
   }
 }
+
+@media screen and (max-width: 570px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+
+    .category {
+      border-right: none;
+      border-bottom: 1px solid $form-border-color;
+    }
+  }
+}

@@ -5,6 +5,7 @@ $base-padding: 24px;
 
 // COLORS
 $white: #ffffff;
+$black: #000000;
 $blackLowOpacity: rgba(1, 2, 2, 0.2);
 $lighterGrayOne: #d8d8d8;
 $lighterGrayTwo: #e0e3ed;
@@ -19,6 +20,7 @@ $darkerGray: #434343;
 $darkGray: #2a2a2a;
 $darkGrayTwo: #292929;
 $orange: #d58e32;
+$green: rgb(96, 177, 42);
 $transparentGray: rgba(104, 100, 100, 0.5);
 $transparentPink: rgb(235, 238, 252);
 $transparentBlue: rgb(247, 229, 235);
@@ -28,6 +30,7 @@ $button-main-bg: $darkGray;
 $button-text: $white;
 $button-outline-primary: $darkGray;
 $button-hover-bg: $orange;
+$mobile-menuBar-menu-bg: $orange;
 
 // HEADER COLORS VARIABLES
 $header-bg: $gray;
@@ -104,6 +107,12 @@ $form-icon-color: $orange;
 $price-color: $white;
 $price-color-original: $grayTwo;
 $price-color-background: $darkGray;
+
+// GALLERY COLORS
+$gallery-main-color: $black;
+$gallery-secondary-color: $white;
+$gallery-button-color: $green;
+$gallery-price-bkg: $blackLowOpacity;
 
 $time-animation: 250ms;
 $background-color-time-animation: 250ms;

@@ -11,7 +11,7 @@ const SalesPanel = ({ children, className: propClassName, sales }) => {
   return (
     <div
       className={classes.join(' ')}
-      style={{ backgroundImage: `url(${srcDir}${sales.filePath}` }}
+      style={{ backgroundImage: `url(${srcDir}${sales ? sales.filePath : ''}` }}
     >
       {children}
     </div>
