@@ -773,7 +773,13 @@ const initialState = {
     },
   ],
   cart: {
-    products: [],
+    products: [
+      {
+        id: '1',
+        name: 'Aenean Ru Bristique 3',
+        price: 30,
+      },
+    ],
   },
 
   brands: [

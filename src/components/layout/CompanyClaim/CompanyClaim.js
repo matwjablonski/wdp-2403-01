@@ -9,7 +9,8 @@ import MobileCompanyClaim, {
 } from '../CompanyClaimMedia/CompanyClaimMedia';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMobileAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import Cart from '../../features/Cart/Cart';
 
 const CompanyClaim = () => {
   return (
@@ -27,16 +28,7 @@ const CompanyClaim = () => {
               <img src='/images/logo.png' alt='Bazar' />
             </a>
           </div>
-          <div className={`col text-right ${styles.cart}`}>
-            <a href='#' className={styles.cartBox}>
-              <div className={styles.cartIcon}>
-                <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
-              </div>
-              <div className={styles.cartCounter}>
-                <div className={styles.itemsAmount}>99999</div>
-              </div>
-            </a>
-          </div>
+          <Cart />
           <MobileCompanyClaim>
             {logo}
             <div className={`col mt-3`}>
