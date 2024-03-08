@@ -7,7 +7,7 @@ import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addGrade } from '../../../redux/clientsGradesRedux';
+import { addGrade, changeGrade } from '../../../redux/clientsGradesRedux';
 import clsx from 'clsx';
 
 const Stars = props => {
@@ -55,7 +55,11 @@ const Stars = props => {
     if (grade === null) {
       grade = e.target.getAttribute('id');
     }
-    dispatch(addGrade({ productName, grade }));
+    if (isGradedFlag === true) {
+      dispatch(changeGrade({ productName, grade, clientID: '1' }));
+    } else {
+      dispatch(addGrade({ productName, grade }));
+    }
     setClientGrade(parseInt(grade));
     setFilledStarsNum(clientGrade);
     isGradedFlag = true;
