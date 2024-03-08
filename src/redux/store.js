@@ -6,6 +6,7 @@ import categoriesReducer from './categoriesRedux';
 import productsReducer from './productsRedux';
 import viewModeReducer from './viewModeRedux';
 import promotionsReducer from './promotionsRedux';
+import clientsGradesReducer from './clientsGradesRedux';
 
 // define reducers
 const reducers = {
@@ -14,6 +15,7 @@ const reducers = {
   products: productsReducer,
   activeViewMode: viewModeReducer,
   promotions: promotionsReducer,
+  clientsGrades: clientsGradesReducer,
 };
 
 // add blank reducers for initial state properties without reducers
