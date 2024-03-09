@@ -778,6 +778,8 @@ const initialState = {
         id: '1',
         name: 'Aenean Ru Bristique 3',
         price: 30,
+        amount: 2,
+        clientID: '1',
       },
     ],
   },

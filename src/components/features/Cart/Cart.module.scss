@@ -4,10 +4,11 @@
     transform: translate(0, 0);
     max-height: 1000px;
     opacity: 1;
+    position: absolute;
 }
 
 @mixin accordion-closed() {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     transition: all 0.25s ease-in-out;
     max-height: 0;
@@ -22,6 +23,10 @@
 }
 
 .cart {
+    position: relative;
+    background: transparent;
+    z-index: 9999;
+
     .cartBox {
         display: inline-block;
         position: relative;
@@ -77,13 +82,24 @@
     &.active {
         .cart__content {
             @include accordion-open();
-            padding: (1.5px * 1.5) 0 0 0;
+            background-color: $cart-dropdown-bg;
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid $cart-dropdown-outline;
+            width: 100%;
+
+            .button {
+                background-color: $cart-dropdown-button-bg;
+                border: none;
+                margin-top: 10px;
+            }
         }
 
     }
 
     &__summary {
-        @include flex(row, center, space-between);
+        // @include flex(row, center, space-between);
         text-transform: uppercase;
         cursor: pointer;
     }
@@ -107,25 +123,34 @@
     }
 
     &__content {
+        position: absolute;
         @include accordion-closed();
         opacity: 0;
         animation: flipdown 0.5s ease both;
         color: black;
+        width: 100%;
     }
 
     &__order_summary {
+        padding: 0;
+
         li {
             @include flex(row, center, space-between);
         }
 
-        .widget-amount {
+        .widget_amount {
             @include flex(column-reverse, center, space-between);
             margin: 0 1.5px 0 0;
 
             input {
                 margin: 0;
-                width: (1.5px * 2);
-                height: (1.5px * 2);
+                width: (15px * 2);
+                height: (15px * 2);
+                text-align: center;
+            }
+
+            a {
+                color: $cart-dropdown-button-bg;
             }
 
             &:hover .btn-quantity--lt {
@@ -138,16 +163,20 @@
 
     &__product {
         // CODE CHANGED
-        width: 170px; // CODE CHANGED
+        width: 75%; // CODE CHANGED
     }
 
     // CODE ADDED START
 
-    &__product-header {
+    &__product_header {
         @include flex(row, center, space-between);
     }
 
-    &__product-details {
+    &__product_price {
+        margin-left: 25%;
+    }
+
+    &__product_details {
         li {
             display: block;
             margin: 0 0 (1.5px / 4) 0;
@@ -161,7 +190,7 @@
 
     }
 
-    &__product-details-label {
+    &__product_details_label {
         position: relative;
         padding: 0 (1.5px / 2) 0 0;
         font-weight: 700;
@@ -175,16 +204,19 @@
 
     // CODE ADDED END
 
-    &__action-buttons {
+    &__action_buttons {
         @include flex(row, center, space-between);
         font-size: 0;
 
-        i {
+        svg {
             font-size: 14px;
         }
 
         li {
             margin: 0 0 0 1.5px;
+        }
+        li:nth-of-type(2) {
+            margin-left: 10px;
         }
 
         a {
