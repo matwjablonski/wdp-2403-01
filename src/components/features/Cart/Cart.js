@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styles from './Cart.module.scss';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,15 +12,18 @@ import {
 import clsx from 'clsx';
 
 const Cart = () => {
-  const [cart, setCart] = useState([]);
   let [isOpen, setIsOpen] = useState(false);
   const products = useSelector(state => state.cart).products;
   let productKey = 0;
+  let subTotalPrice = useMemo(() => {
+    let subTotalPrice = 0;
+    for (let product of products) {
+      subTotalPrice += product.amount * product.price;
+    }
 
-  const addToCart = product => {
-    setCart([...cart, product]);
-  };
-
+    return subTotalPrice;
+  }, [products]);
+  const deliveryPrice = 0;
   const toggleTrigger = e => {
     e.preventDefault();
     if (isOpen) {
@@ -41,7 +44,7 @@ const Cart = () => {
               <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
             </div>
             <div className={styles.cartCounter}>
-              <div className={styles.itemsAmount}>30</div>
+              <div className={styles.itemsAmount}>{subTotalPrice}</div>
             </div>
           </a>
           <div className={styles.cart__summary}></div>
@@ -93,7 +96,7 @@ const Cart = () => {
               <li className='cart__order-subtotal'>
                 <span className='cart__order-price-name'>Subtotal:</span>
                 <span className='cart__order-price-sum'>
-                  $<strong>0</strong>
+                  $<strong>{subTotalPrice}</strong>
                 </span>
               </li>
               <li className='cart__order-delivery'>
@@ -107,7 +110,7 @@ const Cart = () => {
                   <strong>Total:</strong>
                 </span>
                 <span className='cart__order-price-sum'>
-                  $<strong>0</strong>
+                  $<strong>{subTotalPrice + deliveryPrice}</strong>
                 </span>
               </li>
             </ul>
