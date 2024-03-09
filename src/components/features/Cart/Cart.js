@@ -1,0 +1,145 @@
+import React, { useState, useMemo } from 'react';
+import styles from './Cart.module.scss';
+import { useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faShoppingBasket,
+  faPencilAlt,
+  faTrashAlt,
+  faPlus,
+  faMinus,
+} from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
+
+const Cart = () => {
+  let [isOpen, setIsOpen] = useState(false);
+  const products = useSelector(state => state.cart).products;
+  let productKey = 0;
+  let subTotalPrice = useMemo(() => {
+    let subTotalPrice = 0;
+    for (let product of products) {
+      subTotalPrice += product.amount * product.price;
+    }
+
+    return subTotalPrice;
+  }, [products]);
+  const deliveryPrice = 0;
+  const toggleTrigger = e => {
+    e.preventDefault();
+    if (isOpen) {
+      isOpen = false;
+      setIsOpen(isOpen);
+    } else {
+      isOpen = true;
+      setIsOpen(isOpen);
+    }
+  };
+
+  return (
+    <div className={`col text-right ${styles.cart}`}>
+      <div id='cart' className={clsx(styles.cart, isOpen && styles.active)}>
+        <div onClick={e => toggleTrigger(e)}>
+          <a href='#' className={styles.cartBox}>
+            <div className={styles.cartIcon}>
+              <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
+            </div>
+            <div className={styles.cartCounter}>
+              <div className={styles.itemsAmount}>{subTotalPrice}</div>
+            </div>
+          </a>
+        </div>
+        <div className={styles.cart__content}>
+          <form className={styles.cart__order}>
+            <ul className={styles.cart__order_summary}>
+              {products.map(product => (
+                <li key={productKey++}>
+                  <div className={styles.widget_amount}>
+                    <a className={clsx(styles.btn_quantity__lt)} href='#less'>
+                      <FontAwesomeIcon icon={faMinus} />
+                    </a>
+                    <input
+                      className='amount'
+                      type='text'
+                      value={product.amount}
+                    ></input>
+                    <a className={clsx(styles.btn_quantity__lt)} href='#more'>
+                      <FontAwesomeIcon icon={faPlus} />
+                    </a>
+                  </div>
+                  <div className={styles.cart__product}>
+                    <div className={styles.cart__product_header}>
+                      <span>{product.name}</span>
+                      <span className={styles.cart__product_price}>
+                        $<strong>{product.price}</strong>
+                      </span>
+                    </div>
+                  </div>
+                  <ul className={styles.cart__action_buttons}>
+                    <li>
+                      <a href='#edit'>
+                        Edit
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                      </a>
+                    </li>
+                    <li>
+                      <a href='#remove'>
+                        Remove
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              ))}
+            </ul>
+            <ul className={styles.cart__order_price}>
+              <li>
+                <span>Subtotal:</span>
+                <span>
+                  $<strong>{subTotalPrice}</strong>
+                </span>
+              </li>
+              <li>
+                <span>Delivery:</span>
+                <span>
+                  $<strong>0</strong>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <strong>Total:</strong>
+                </span>
+                <span>
+                  $<strong>{subTotalPrice + deliveryPrice}</strong>
+                </span>
+              </li>
+            </ul>
+            <div className={styles.cart__order_confirmation}>
+              <button
+                type='submit'
+                className={clsx('btn btn-secondary', styles.button)}
+              >
+                Order
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* <h2>Koszyk</h2>
+      <ul>
+        {cart.map((product) => (
+          <li key={product.id}>
+            {product.name} - ${product.price}
+          </li>
+        ))}
+      </ul>
+
+      <h2>Dodaj produkt do koszyka</h2>
+      <button onClick={() => addToCart({ id: 4, name: 'Nowy produkt', price: 15.0 })}>
+        Dodaj nowy produkt do koszyka
+      </button> */}
+    </div>
+  );
+};
+
+export default Cart;
