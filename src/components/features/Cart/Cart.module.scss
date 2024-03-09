@@ -98,30 +98,6 @@
 
     }
 
-    &__summary {
-        // @include flex(row, center, space-between);
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-
-    &__icon {
-        font-size: (1.5px * 2);
-    }
-
-    &__total-number {
-        background: $orange;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        color: $white;
-        text-align: center;
-        line-height: 28px;
-    }
-
-    &__total_price {
-        color: black;
-    }
-
     &__content {
         position: absolute;
         @include accordion-closed();
@@ -140,33 +116,24 @@
 
         .widget_amount {
             @include flex(column-reverse, center, space-between);
-            margin: 0 1.5px 0 0;
 
             input {
                 margin: 0;
-                width: (15px * 2);
-                height: (15px * 2);
+                width: 30px;
+                height: 30px;
                 text-align: center;
+                border-radius: 5px;
             }
 
             a {
                 color: $cart-dropdown-button-bg;
             }
-
-            &:hover .btn-quantity--lt {
-                opacity: 1;
-            }
-
         }
-
     }
 
     &__product {
-        // CODE CHANGED
-        width: 75%; // CODE CHANGED
+        width: 75%;
     }
-
-    // CODE ADDED START
 
     &__product_header {
         @include flex(row, center, space-between);
@@ -175,34 +142,6 @@
     &__product_price {
         margin-left: 25%;
     }
-
-    &__product_details {
-        li {
-            display: block;
-            margin: 0 0 (1.5px / 4) 0;
-            font-size: 10px;
-            color: lighten(black, 40%);
-            text-transform: lowercase;
-            font-style: italic;
-            line-height: 1.3;
-            letter-spacing: 0.5px;
-        }
-
-    }
-
-    &__product_details_label {
-        position: relative;
-        padding: 0 (1.5px / 2) 0 0;
-        font-weight: 700;
-
-        &::after {
-            position: absolute;
-            content: ':';
-        }
-
-    }
-
-    // CODE ADDED END
 
     &__action_buttons {
         @include flex(row, center, space-between);
@@ -215,6 +154,7 @@
         li {
             margin: 0 0 0 1.5px;
         }
+
         li:nth-of-type(2) {
             margin-left: 10px;
         }
@@ -231,8 +171,6 @@
     }
 
     &__order_price {
-        margin: 1.5px 0 0 0; // CODE CHANGED
-        padding: 1.5px 0;
         list-style-type: none;
         border-top: 1px solid lighten(black, 70%);
 
@@ -243,12 +181,10 @@
 
     &__order_confirmation {
         border-top: 1px solid lighten(black, 70%);
-        padding: 1.5px 0 0 0;
 
         input,
         button {
             width: 100%;
-            margin-bottom: (1.5px / 2);
         }
 
     }

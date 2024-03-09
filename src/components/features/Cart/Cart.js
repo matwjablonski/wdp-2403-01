@@ -47,7 +47,6 @@ const Cart = () => {
               <div className={styles.itemsAmount}>{subTotalPrice}</div>
             </div>
           </a>
-          <div className={styles.cart__summary}></div>
         </div>
         <div className={styles.cart__content}>
           <form className={styles.cart__order}>
@@ -55,7 +54,7 @@ const Cart = () => {
               {products.map(product => (
                 <li key={productKey++}>
                   <div className={styles.widget_amount}>
-                    <a className='btn-quantity btn-quantity--lt' href='#less'>
+                    <a className={clsx(styles.btn_quantity__lt)} href='#less'>
                       <FontAwesomeIcon icon={faMinus} />
                     </a>
                     <input
@@ -63,7 +62,7 @@ const Cart = () => {
                       type='text'
                       value={product.amount}
                     ></input>
-                    <a className='btn-quantity btn-quantity--lt' href='#more'>
+                    <a className={clsx(styles.btn_quantity__lt)} href='#more'>
                       <FontAwesomeIcon icon={faPlus} />
                     </a>
                   </div>
@@ -93,23 +92,23 @@ const Cart = () => {
               ))}
             </ul>
             <ul className={styles.cart__order_price}>
-              <li className='cart__order-subtotal'>
-                <span className='cart__order-price-name'>Subtotal:</span>
-                <span className='cart__order-price-sum'>
+              <li>
+                <span>Subtotal:</span>
+                <span>
                   $<strong>{subTotalPrice}</strong>
                 </span>
               </li>
-              <li className='cart__order-delivery'>
-                <span className='cart__order-price-name'>Delivery:</span>
-                <span className='cart__order-price-sum'>
+              <li>
+                <span>Delivery:</span>
+                <span>
                   $<strong>0</strong>
                 </span>
               </li>
-              <li className='cart__order-total'>
-                <span className='cart__order-price-name'>
+              <li>
+                <span>
                   <strong>Total:</strong>
                 </span>
-                <span className='cart__order-price-sum'>
+                <span>
                   $<strong>{subTotalPrice + deliveryPrice}</strong>
                 </span>
               </li>
