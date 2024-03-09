@@ -9,6 +9,9 @@ import Button from '../Button/Button';
 import Price from '../Price/Price';
 import Stars from '../Stars/Stars';
 import ProductImage from '../ProductImage/ProductImage';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addProduct, changeProductAmount } from '../../../redux/cartRedux';
 
 const ProductBox = ({
   id,
@@ -27,6 +30,20 @@ const ProductBox = ({
   const compareButtonActive = clsx('outline', {
     [styles.compare]: compare,
   });
+  let [isSelected, setIsSelected] = useState(false);
+  const dispatch = useDispatch();
+  const addToCart = e => {
+    if (e.target) {
+      e.preventDefault();
+      if (isSelected === false) {
+        dispatch(addProduct({ id, name, price, amount: 1 }));
+        isSelected = true;
+        setIsSelected(isSelected);
+      } else {
+        dispatch(changeProductAmount({ id }));
+      }
+    }
+  };
 
   return (
     <div className={styles.root}>
@@ -35,7 +52,7 @@ const ProductBox = ({
         {promo && <div className={styles.sale}>{promo}</div>}
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
-          <Button variant='small'>
+          <Button variant='small' onClick={e => addToCart(e)}>
             <FontAwesomeIcon icon={faShoppingBasket} />
             Add to cart
           </Button>

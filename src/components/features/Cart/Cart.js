@@ -15,6 +15,7 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
   let [isOpen, setIsOpen] = useState(false);
   const products = useSelector(state => state.cart).products;
+  let productKey = 0;
 
   const addToCart = product => {
     setCart([...cart, product]);
@@ -40,7 +41,7 @@ const Cart = () => {
               <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
             </div>
             <div className={styles.cartCounter}>
-              <div className={styles.itemsAmount}>{products[0].price}</div>
+              <div className={styles.itemsAmount}>30</div>
             </div>
           </a>
           <div className={styles.cart__summary}></div>
@@ -48,43 +49,45 @@ const Cart = () => {
         <div className={styles.cart__content}>
           <form className={styles.cart__order}>
             <ul className={styles.cart__order_summary}>
-              <li>
-                <div className={styles.widget_amount}>
-                  <a className='btn-quantity btn-quantity--lt' href='#less'>
-                    <FontAwesomeIcon icon={faMinus} />
-                  </a>
-                  <input
-                    className='amount'
-                    type='text'
-                    value={products[0].amount}
-                  ></input>
-                  <a className='btn-quantity btn-quantity--lt' href='#more'>
-                    <FontAwesomeIcon icon={faPlus} />
-                  </a>
-                </div>
-                <div className={styles.cart__product}>
-                  <div className={styles.cart__product_header}>
-                    <span>{products[0].name}</span>
-                    <span className={styles.cart__product_price}>
-                      $<strong>{products[0].price}</strong>
-                    </span>
+              {products.map(product => (
+                <li key={productKey++}>
+                  <div className={styles.widget_amount}>
+                    <a className='btn-quantity btn-quantity--lt' href='#less'>
+                      <FontAwesomeIcon icon={faMinus} />
+                    </a>
+                    <input
+                      className='amount'
+                      type='text'
+                      value={product.amount}
+                    ></input>
+                    <a className='btn-quantity btn-quantity--lt' href='#more'>
+                      <FontAwesomeIcon icon={faPlus} />
+                    </a>
                   </div>
-                </div>
-                <ul className={styles.cart__action_buttons}>
-                  <li>
-                    <a href='#edit'>
-                      Edit
-                      <FontAwesomeIcon icon={faPencilAlt} />
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#remove'>
-                      Remove
-                      <FontAwesomeIcon icon={faTrashAlt} />
-                    </a>
-                  </li>
-                </ul>
-              </li>
+                  <div className={styles.cart__product}>
+                    <div className={styles.cart__product_header}>
+                      <span>{product.name}</span>
+                      <span className={styles.cart__product_price}>
+                        $<strong>{product.price}</strong>
+                      </span>
+                    </div>
+                  </div>
+                  <ul className={styles.cart__action_buttons}>
+                    <li>
+                      <a href='#edit'>
+                        Edit
+                        <FontAwesomeIcon icon={faPencilAlt} />
+                      </a>
+                    </li>
+                    <li>
+                      <a href='#remove'>
+                        Remove
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              ))}
             </ul>
             <ul className={styles.cart__order_price}>
               <li className='cart__order-subtotal'>
