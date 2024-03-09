@@ -93,9 +93,12 @@
                 background-color: $cart-dropdown-button-bg;
                 border: none;
                 margin-top: 10px;
+
+                &:hover {
+                    background-color: lighten($cart-dropdown-button-bg, 10%);
+                }
             }
         }
-
     }
 
     &__content {
