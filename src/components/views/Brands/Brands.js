@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import { getViewMode } from '../../../utils/viewMode';
 
 const Brands = () => {
   const brandsImg = useSelector(state => state.brands);
-  const layout = useSelector(state => state.activeViewMode);
+  const layout = useSelector(state => getViewMode(state));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentLayout, setCurrentLayout] = useState(layout);
   const slidesPerPage = {
