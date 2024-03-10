@@ -56,3 +56,31 @@
     display: flex;
   }
 }
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    .imgCompare {
+      width: 70%;
+      height: 140px;
+    }
+    .content {
+      text-align: center;
+      h5 {
+        font-size: 13px;
+        flex-wrap: wrap;
+      }
+    }
+    .buttonContainer {
+      padding: 0 0 5px;
+      justify-content: center;
+      .price {
+        display: flex;
+      }
+    }
+    .closeIcon {
+      right: 25%;
+    }
+  }
+}
