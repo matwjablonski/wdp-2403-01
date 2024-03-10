@@ -2,13 +2,13 @@
 @import "../../../styles/keyframes.scss";
 
 .root {
-
   .colXSmall {
     @media (max-width: 600px) {
      max-width: 60%;
      flex: 0 0 60%;
     }
   }
+
   .colXXSmall {
     @media (max-width: 400px) {
      max-width: 100%;
@@ -16,129 +16,60 @@
     }
   }
 
-  .panelBar {
-    margin-bottom: 30px;
-    position: relative;
+  .dots {
     display: flex;
-    gap: 10px 0;
-    align-items: end;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    border-bottom: 4px solid $panelbar-border;
+    align-self: center;
+    transform: translateY(15px);
+    background-color: $panelbar-bg;
 
-    @media (max-width: 768px) {
-      justify-content: center;
-      border-top: 4px solid $panelbar-border;
-      border-bottom: none;
-    }
-
-    .heading {
-      position: relative;
-
-      h3 {
-        color: $panelbar-primary;
-        text-transform: uppercase;
-        font-size: 20px;
-        line-height: 38px;
-        margin: 0;
-        letter-spacing: 1px;
-      }
-
-      &::before {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 45px;
-        border-bottom: 4px solid $panelbar-primary;
-      }
-    }
-
-    .menu {
-      text-align: center;
-      ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        li {
-          display: inline-block;
-          margin: 0 0.5rem;
-          font-weight: 600;
-
-          a {
-            color: $panelbar-text;
-            position: relative;
-            text-decoration: none;
-            font-size: 18px;
-            display: block;
-            cursor: pointer;
-
-            &.active,
-            &:hover {
-              &::before {
-                content: "";
-                position: absolute;
-                bottom: -4px;
-                left: 0;
-                width: 100%;
-                border-bottom: 4px solid $panelbar-primary;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .dots {
+    ul {
       display: flex;
-      align-self: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 5px;
+      align-items: center;
+      margin: 0;
+      padding: 2px 0 2px 1rem;
+      list-style: none;
+      background-color: $panelbar-bg;
 
-      ul {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        row-gap: 5px;
-        align-items: center;
-        margin: 0;
-        padding: 2px 0 0 1rem;
-        list-style: none;
-        background-color: $panelbar-bg;
+      li {
+        display: inline-block;
+        margin-left: 0.5rem;
 
-        li {
-          display: inline-block;
-          margin-left: 0.5rem;
+        a {
+          display: block;
+          width: 13px;
+          height: 13px;
+          border-radius: 6px;
+          background-color: $panelbar-link-bg;
+          font-size: 0;
+          cursor: pointer;
 
-          a {
-            display: block;
-            width: 13px;
-            height: 13px;
-            border-radius: 6px;
-            background-color: $panelbar-link-bg;
-            font-size: 0;
-            cursor: pointer;
-
-            &.active,
-            &:hover {
-              background-color: $panelbar-primary;
-            }
+          &.active,
+          &:hover {
+            background-color: $panelbar-primary;
           }
         }
       }
     }
   }
 }
+
 .compare {
   position: sticky;
   bottom: 0;
   padding: 10px;
 }
+
 .fadeOut {
   opacity: 0;
   animation: fadeOut 0.2s ease-in-out;
 }
+
 .fadeIn {
   opacity: 1;
   animation: fadeIn 0.2s ease-in-out;
 }
+
 $timeAnimation: $time-animation;
