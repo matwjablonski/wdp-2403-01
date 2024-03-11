@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './PromoteProductBox.module.scss';
 import ProductImage from '../ProductImage/ProductImage';
@@ -21,13 +21,6 @@ import clsx from 'clsx';
 const PromoteProductBox = ({ products }) => {
   const slider = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      slider.current.slickNext();
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const settings = {
     arrows: false,
