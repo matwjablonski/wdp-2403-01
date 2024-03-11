@@ -18,6 +18,7 @@ const FeaturedProduct = () => {
     pauseOnHover: false,
     swipe: false,
     arrows: false,
+    fade: true,
   };
 
   const handlePrev = () => {
