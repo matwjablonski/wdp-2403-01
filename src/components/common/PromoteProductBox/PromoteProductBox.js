@@ -24,7 +24,7 @@ const PromoteProductBox = ({ products }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       slider.current.slickNext();
-    }, 3000); // Automatyczna zmiana slajdów co 3 sekundy
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
