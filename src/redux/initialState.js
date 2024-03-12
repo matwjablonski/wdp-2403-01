@@ -772,10 +772,22 @@ const initialState = {
       compare: false,
     },
   ],
+
+  productsCompare: [],
+
   cart: {
     products: [],
   },
-
+  clientsOpinions: [
+    {
+      id: '1',
+      fullName: 'John Smith',
+      role: 'Favourite client',
+      photo: 'images/clients/john-smith.jpg',
+      text:
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit at mollitia voluptatibus harum placeat adipisci consequuntur, laboriosam maiores. Facilis, ad!',
+    },
+  ],
   brands: [
     {
       id: 1,
@@ -801,8 +813,31 @@ const initialState = {
       id: 6,
       url: 'images/brands/brands-6.jpg',
     },
+    {
+      id: 7,
+      url: 'images/brands/brands-7.png',
+    },
+    {
+      id: 8,
+      url: 'images/brands/brands-8.png',
+    },
+    {
+      id: 9,
+      url: 'images/brands/brands-9.jpg',
+    },
+    {
+      id: 10,
+      url: 'images/brands/brands-10.png',
+    },
+    {
+      id: 11,
+      url: 'images/brands/brands-11.jpg',
+    },
+    {
+      id: 12,
+      url: 'images/brands/brands-12.png',
+    },
   ],
-
   activeViewMode: 'desktop',
 };
 
