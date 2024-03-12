@@ -7,6 +7,7 @@ $base-padding: 24px;
 $white: #ffffff;
 $black: #000000;
 $blackLowOpacity: rgba(1, 2, 2, 0.2);
+$blacLowOpacityTwo: rgba(0, 0, 0, 0.4);
 $lighterGrayOne: #d8d8d8;
 $lighterGrayTwo: #e0e3ed;
 $lighterGrayThree: #e2e2e2;
@@ -89,6 +90,18 @@ $productbox-sale-bg: $darkGrayTwo;
 $productbox-stars-clr: $darkGray;
 $productbox-line: $darkGray;
 $productbox-photo-bg: $lightGrayThree;
+
+// PROMOTE PRODUCT BOX
+$promoted-productbox-bg: $white;
+$promoted-productbox-bgTwo: $lighterGrayFour;
+$promoted-productbox-border: $lighterGrayFour;
+$promoted-productbox-deals-bg: $darkGray;
+$promoted-productbox-primary: $orange;
+$promoted-productbox-text-primary: $white;
+
+// FEATURED PRODUCT 
+$featured-product-primary: $white;
+$featured-product-secondary: $blacLowOpacityTwo;
 
 // FOOTER COLORS
 $footer-claim-bg: $darkGray;
