@@ -9,7 +9,6 @@ import Gallery from '../../features/Gallery/Gallery';
 import Brands from '../Brands/Brands';
 import Promotions from '../../features/Promotions/Promotions';
 
-
 const Homepage = () => (
   <div className={styles.root}>
     <Promote />

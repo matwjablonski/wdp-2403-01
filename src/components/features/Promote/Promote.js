@@ -7,8 +7,12 @@ import { getAll } from '../../../redux/productsRedux';
 
 const Promote = () => {
   const products = useSelector(getAll);
-  const promotedProduct = products.find(
-    product => product.id === 'aenean-ru-bristique-21'
+
+  const promotedProducts = products.filter(
+    product =>
+      product.id === 'aenean-ru-bristique-2' ||
+      product.id === 'aenean-ru-bristique-10' ||
+      product.id === 'aenean-ru-bristique-20'
   );
 
   return (
@@ -16,7 +20,7 @@ const Promote = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-3'>
-            {promotedProduct && <PromoteProductBox {...promotedProduct} />}
+            <PromoteProductBox products={promotedProducts} />
           </div>
           <FeaturedProduct />
         </div>
