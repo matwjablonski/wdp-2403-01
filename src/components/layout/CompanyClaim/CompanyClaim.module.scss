@@ -29,13 +29,15 @@
   }
 
   .cart {
+    .cartBox:hover {
+      background-color: transparent;
+    }
     .cartBox {
       display: inline-block;
       position: relative;
       padding-right: 40px;
       color: $header-cart-text;
       @extend %hover-effects;
-
 
       .cartIcon {
         background-color: $header-cart-bg;
@@ -125,6 +127,7 @@
     .phoneNumber {
       p {
         font-size: 14px;
+        padding-right: 40px;
 
         .icon {
           font-size: 1.5rem;
