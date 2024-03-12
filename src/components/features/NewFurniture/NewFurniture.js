@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CompareProducts from '../../views/CompareProducts/CompareProducts';
 import styles from './NewFurniture.module.scss';
 import { clsx } from 'clsx';
 import ProductBox from '../../common/ProductBox/ProductBox';
@@ -130,6 +131,9 @@ class NewFurniture extends React.Component {
                     <ProductBox {...item} />
                   </div>
                 ))}
+            </div>
+            <div className={styles.compare}>
+              <CompareProducts />
             </div>
           </div>
         </div>

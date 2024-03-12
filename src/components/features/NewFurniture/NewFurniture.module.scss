@@ -56,6 +56,12 @@
   }
 }
 
+.compare {
+  position: sticky;
+  bottom: 0;
+  padding: 10px;
+}
+
 .fadeOut {
   opacity: 0;
   animation: fadeOut 0.2s ease-in-out;
