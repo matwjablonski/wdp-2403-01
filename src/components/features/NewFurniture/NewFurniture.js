@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CompareProducts from '../../views/CompareProducts/CompareProducts';
 import styles from './NewFurniture.module.scss';
 import { clsx } from 'clsx';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../common/Swipeable/Swipeable';
+import PanelBar from '../../layout/PanelBar/PanelBar';
+import PanelMenu from '../../layout/PanelMenu/PanelMenu';
 import { getItemsOnPage } from '../../../utils/viewMode';
 
 class NewFurniture extends React.Component {
@@ -99,28 +102,16 @@ class NewFurniture extends React.Component {
       <Swipeable action={this.handlePageSwipe}>
         <div className={styles.root}>
           <div className='container'>
-            <div className={styles.panelBar}>
-              <div className={'col-auto ' + styles.heading}>
-                <h3>New furniture</h3>
-              </div>
-              <div className={'col-auto ' + styles.menu}>
-                <ul>
-                  {categories.map(item => (
-                    <li key={item.id}>
-                      <a
-                        className={item.id === activeCategory && styles.active}
-                        onClick={() => this.handleCategoryChange(item.id)}
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <PanelBar title='New furniture'>
+              <PanelMenu
+                menuItems={categories}
+                action={this.handleCategoryChange}
+                activeItem={activeCategory}
+              />
               <div className={'col-auto ' + styles.dots}>
                 <ul>{dots}</ul>
               </div>
-            </div>
+            </PanelBar>
             <div
               className={`row justify-content-center ${
                 isFading ? styles.fadeOut : styles.fadeIn
@@ -140,6 +131,9 @@ class NewFurniture extends React.Component {
                     <ProductBox {...item} />
                   </div>
                 ))}
+            </div>
+            <div className={styles.compare}>
+              <CompareProducts />
             </div>
           </div>
         </div>
