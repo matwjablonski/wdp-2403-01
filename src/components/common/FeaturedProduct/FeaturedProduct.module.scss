@@ -1,0 +1,149 @@
+@import "../../../styles/settings.scss";
+
+.promoSale {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 0;
+  gap: 105px;
+
+  button {
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .verticalBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 210px;
+    background-color: $featured-product-secondary;
+    color: $featured-product-primary;
+
+    span,
+    p {
+      opacity: 1;
+      margin: -5px 0;
+    }
+
+    span {
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+    }
+
+    span:nth-child(1) {
+      font-weight: 200;
+
+      span {
+        font-weight: 600;
+      }
+    }
+
+    p {
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      font-weight: 200;
+      letter-spacing: 1px;
+    }
+  }
+
+  .shopNow {
+    position: absolute;
+    left: 50%;
+    top: 67%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 50px;
+    background-color: $featured-product-primary;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  
+  .buttonContainer {
+    button {
+      padding: 10px;
+      border: none;
+      background-color: $button-main-bg;
+      color: $button-text;
+    }
+    
+    button:hover {
+      background-color: $button-hover-bg;
+    }
+  }
+}
+
+.sliderContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-10%);
+  }
+}
+
+@media (max-width: 768px) {
+  .promoSale {
+    display:block;
+  }
+
+  .verticalBar {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    height: 100px !important; 
+    padding: 20px; 
+    text-align: center; 
+
+    span {
+      font-size: 2rem !important;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1rem !important;
+    }
+  }
+
+  .shopNow {
+    width: 60px !important;
+    height: 25px !important;
+    font-size: 9px !important;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
+  .verticalBar {
+    margin-top: 60px;
+    padding: 20px; 
+    text-align: center; 
+  }
+}

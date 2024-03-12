@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Homepage from './Homepage.js';
+import Promote from './Promote';
 
-describe('Homepage', () => {
+describe('Promote', () => {
   it('renders without crashing', () => {
-    shallow(<Homepage />);
+    shallow(<Promote />);
   });
 });
