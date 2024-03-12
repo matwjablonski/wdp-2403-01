@@ -813,6 +813,30 @@ const initialState = {
       id: 6,
       url: 'images/brands/brands-6.jpg',
     },
+    {
+      id: 7,
+      url: 'images/brands/brands-7.png',
+    },
+    {
+      id: 8,
+      url: 'images/brands/brands-8.png',
+    },
+    {
+      id: 9,
+      url: 'images/brands/brands-9.jpg',
+    },
+    {
+      id: 10,
+      url: 'images/brands/brands-10.png',
+    },
+    {
+      id: 11,
+      url: 'images/brands/brands-11.jpg',
+    },
+    {
+      id: 12,
+      url: 'images/brands/brands-12.png',
+    },
   ],
   activeViewMode: 'desktop',
 };
