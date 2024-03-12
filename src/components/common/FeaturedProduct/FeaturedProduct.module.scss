@@ -105,3 +105,45 @@
     transform: translateY(-10%);
   }
 }
+
+@media (max-width: 768px) {
+  .promoSale {
+    display:block;
+  }
+
+  .verticalBar {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    height: 100px !important; 
+    padding: 20px; 
+    text-align: center; 
+
+    span {
+      font-size: 2rem !important;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 1rem !important;
+    }
+  }
+
+  .shopNow {
+    width: 60px !important;
+    height: 25px !important;
+    font-size: 9px !important;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
+  .verticalBar {
+    margin-top: 60px;
+    padding: 20px; 
+    text-align: center; 
+  }
+}
